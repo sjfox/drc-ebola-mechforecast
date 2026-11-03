@@ -93,6 +93,21 @@ line up other per-node data against `geo.table`, not the CSV's order.
 - **Travel times are optimistic.** OSRM assumes typical road speeds for each road
   class; many DRC roads are much slower, and seasonal. Relative times matter more than
   absolute ones here, but `gravity_time_offset` is in the same hours.
+- **Comparison with INRB-UMIE's OSRM matrix.** [BDBV2026-Data](https://github.com/INRB-UMIE/BDBV2026-Data/tree/main/data/osrm)
+  publishes a 519×519 car travel-time matrix from the same public OSRM server (regenerated
+  2026-07-10 on GRID3 v8.0 boundaries; its `ZSCode` matches our `node_id`). Compared on
+  2026-11-03, the two agree closely for longer trips (Spearman 0.99 for pairs ≥ 12 h,
+  median ratio 1.00), but less for short ones (pairs < 3 h: Spearman 0.89, 16% differ
+  by more than 1.5×), which is where the gravity kernel puts most weight: with default
+  parameters about 7% of each zone's travel goes to different destinations (median). The
+  difference comes from the routing points, not our road-access time. INRB routes from
+  `st_point_on_surface`, an arbitrary interior point; we route from the
+  population-weighted centroid, a median 9 km away (> 28 km for 10% of zones). For
+  Mongbwalu their point is about 48 km west of the town, and for Kowe (Lubumbashi) about
+  226 km off. Their matrix is also missing every route to or from Idjwi and Bokoro. We
+  keep ours; theirs is a drop-in sensitivity check for comparing with the INRB
+  invasion-risk model. Both use OSRM's optimistic car speeds (theirs implies a median
+  55 km/h on the road).
 - **Provincial updates.** GRID3 has published newer emergency boundary packages for
   Ituri and Nord-Kivu. v9.0 is used everywhere for consistency.
 - **Population year.** GRID3 v4.4 estimates cover 2022–2024 and are not projected to
