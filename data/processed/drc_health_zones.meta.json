@@ -1,0 +1,21 @@
+{
+  "built_utc": "2026-11-03T18:25:22+00:00",
+  "node_id": "zs_uid (DHIS2 health zone UID)",
+  "n_zones": 519,
+  "population_total_zones": 109715716,
+  "population_total_raster": 109743969,
+  "zones_with_zero_population": [],
+  "centroid": "population-weighted; geometric centroid where population is 0",
+  "sources": {
+    "health_zones": {
+      "name": "GRID3 COD - Health Zones v9.0",
+      "url": "https://services3.arcgis.com/BU6Aadhn6tbBEdyk/arcgis/rest/services/GRID3_COD_health_zones_v9_0/FeatureServer/0",
+      "hdx": "https://data.humdata.org/dataset/grid3-cod-health-zones-v9-0"
+    },
+    "population": {
+      "name": "GRID3 COD - Gridded Population Estimates v4.4",
+      "url": "https://data.worldpop.org/repo/wopr/COD/population/v4.4/COD_population_v4_4_gridded.zip",
+      "hdx": "https://data.humdata.org/dataset/grid3-cod-gridded-population-estimates-v4-4"
+    }
+  }
+}

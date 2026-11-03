@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.egg-info/
+.DS_Store
+
+# Source downloads are large and rebuilt by `python -m fcast.build_geo`.
+/data/raw/
+# The boundaries GeoPackage is ~75 MB; the CSV and metadata are small enough to track.
+/data/processed/*.gpkg
