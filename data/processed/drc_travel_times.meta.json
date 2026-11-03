@@ -1,0 +1,23 @@
+{
+  "built_utc": "2026-11-03T18:59:28+00:00",
+  "n_zones": 519,
+  "units": "hours",
+  "layout": "travel_time_h[i, j] is from zone i to zone j; rows/cols follow node_ids",
+  "source": {
+    "name": "OSRM table service, car profile",
+    "url": "https://router.project-osrm.org/table/v1/driving/"
+  },
+  "access_speed_kmh": 10.0,
+  "fallback": {
+    "speed_kmh": 20.0,
+    "detour_factor": 1.4,
+    "pairs": 1036,
+    "zones_mostly_unrouted": [
+      "Idjwi"
+    ]
+  },
+  "snap_km": {
+    "median": 0.71,
+    "max": 56.9
+  }
+}

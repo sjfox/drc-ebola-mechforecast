@@ -35,6 +35,21 @@ This downloads the source data to `data/raw/` (gitignored, ~250 MB) and writes:
 
 Pass `--refresh` to re-download the source data.
 
+### Road travel times
+
+```bash
+uv run python -m fcast.build_travel
+```
+
+Queries the public [OSRM](https://project-osrm.org/) table service (OpenStreetMap
+roads, car profile) between the population-weighted centroids and writes
+`data/processed/drc_travel_times.npz`: a 519×519 matrix of travel times in hours
+(`travel_time_h[i, j]` is from zone i to zone j), plus a `routed` mask. Each time is the
+road time plus the time to reach the road from each centroid at 10 km/h. Pairs with no
+road route fall back to great-circle distance × 1.4 at 20 km/h. Raw OSRM responses are
+cached in `data/raw/osrm_durations.npz`; pass `--refresh` to re-query. Takes a few
+minutes (121 requests, since the public server allows 100 coordinates per request).
+
 ### Use in epymorph
 
 ```python
@@ -55,7 +70,8 @@ rume = SingleStrataRUME.build(
 out = BasicSimulator(rume).run()
 ```
 
-`geo.params` supplies `population`, `centroid`, and `label`. `geo.table` is the zone
+`geo.params` supplies `population`, `centroid`, `label`, and (once
+`fcast.build_travel` has run) `travel_time`. `geo.table` is the zone
 table in the same order as `geo.scope.node_ids`. `CustomScope` sorts IDs, so always
 line up other per-node data against `geo.table`, not the CSV's order.
 
@@ -63,10 +79,20 @@ line up other per-node data against `geo.table`, not the CSV's order.
 
 ### Notes
 
-- **Connectivity.** epymorph's `Centroids` movement model needs only `population` and
-  `centroid`. It uses an exponential distance kernel (`phi`) and a commuting fraction
-  (`commuter_proportion`), both of which need fitting. Mobile-phone flows from
-  Flowminder are a different source and are not used here.
+- **Connectivity.** Two movement models, both daily commute-and-return with a
+  commuting fraction (`commuter_proportion`):
+  - epymorph's `Centroids`: exponential kernel over straight-line distance (`phi`).
+  - `fcast.movement.Gravity`: a gravity kernel over road travel time,
+    `K[i, j] ∝ population[j]^gravity_pop_exp / (travel_time[i, j] + gravity_time_offset)^gravity_time_exp`,
+    with no self-travel, so `commuter_proportion` is the share leaving each zone daily.
+    Defaults are 1, 2, and 1 hour; all need fitting. `fcast.movement.gravity_kernel`
+    computes the same matrix outside a simulation.
+
+  Swap in `mm=Gravity()` (from `fcast.movement import Gravity`) for `mm.Centroids()`.
+  Mobile-phone flows from Flowminder are a different source and are not used here.
+- **Travel times are optimistic.** OSRM assumes typical road speeds for each road
+  class; many DRC roads are much slower, and seasonal. Relative times matter more than
+  absolute ones here, but `gravity_time_offset` is in the same hours.
 - **Provincial updates.** GRID3 has published newer emergency boundary packages for
   Ituri and Nord-Kivu. v9.0 is used everywhere for consistency.
 - **Population year.** GRID3 v4.4 estimates cover 2022–2024 and are not projected to
