@@ -1,0 +1,520 @@
+location,location_name,prov_code,prov_name,node_id,matched_by,province,province_id,population
+CD-BC-01,Boko Kivulu,CD-BC,Kongo Central,VGFWIr5Rx1D,dhis2,Kongo-Central,dKdrd8HqZWz,306318
+CD-BC-02,Boma,CD-BC,Kongo Central,djWn21U4AVy,dhis2,Kongo-Central,dKdrd8HqZWz,249104
+CD-BC-03,Boma Bungu,CD-BC,Kongo Central,vquecO03tD0,dhis2,Kongo-Central,dKdrd8HqZWz,117283
+CD-BC-04,Gombe Matadi,CD-BC,Kongo Central,MjmIRJaAC1H,dhis2,Kongo-Central,dKdrd8HqZWz,118601
+CD-BC-05,Inga,CD-BC,Kongo Central,DD5m0lzETfF,dhis2,Kongo-Central,dKdrd8HqZWz,113864
+CD-BC-06,Kangu,CD-BC,Kongo Central,bV04pTUIL8A,dhis2,Kongo-Central,dKdrd8HqZWz,140857
+CD-BC-07,Kibunzi,CD-BC,Kongo Central,zuuFyMjjK7i,dhis2,Kongo-Central,dKdrd8HqZWz,63625
+CD-BC-08,Kimpangu,CD-BC,Kongo Central,bBTWb8cD9Z3,dhis2,Kongo-Central,dKdrd8HqZWz,157201
+CD-BC-09,Kimpese,CD-BC,Kongo Central,XXKTLp8q7wJ,dhis2,Kongo-Central,dKdrd8HqZWz,304725
+CD-BC-10,Kimvula,CD-BC,Kongo Central,ZSbsXl7Zsf8,dhis2,Kongo-Central,dKdrd8HqZWz,141648
+CD-BC-11,Kinkonzi,CD-BC,Kongo Central,F1WHo6oyNag,dhis2,Kongo-Central,dKdrd8HqZWz,77986
+CD-BC-12,Kisantu,CD-BC,Kongo Central,pZobW0wXW6e,dhis2,Kongo-Central,dKdrd8HqZWz,418877
+CD-BC-13,Kitona,CD-BC,Kongo Central,ADqfcJ05GHD,dhis2,Kongo-Central,dKdrd8HqZWz,27862
+CD-BC-14,Kizu,CD-BC,Kongo Central,TQ5nmMVD9uY,dhis2,Kongo-Central,dKdrd8HqZWz,78768
+CD-BC-15,Kuimba,CD-BC,Kongo Central,ZekPSH5fUQ0,dhis2,Kongo-Central,dKdrd8HqZWz,108313
+CD-BC-16,Kwilu Ngongo,CD-BC,Kongo Central,DZV9ipxIsg1,dhis2,Kongo-Central,dKdrd8HqZWz,209341
+CD-BC-17,Lukula,CD-BC,Kongo Central,KlQNBFiC8Cf,dhis2,Kongo-Central,dKdrd8HqZWz,277102
+CD-BC-18,Luozi,CD-BC,Kongo Central,DaXi5vRLqh3,dhis2,Kongo-Central,dKdrd8HqZWz,124454
+CD-BC-19,Mangembo,CD-BC,Kongo Central,muQLQumKnyM,dhis2,Kongo-Central,dKdrd8HqZWz,76459
+CD-BC-20,Masa,CD-BC,Kongo Central,yb4Q3Xo1EUo,dhis2,Kongo-Central,dKdrd8HqZWz,224637
+CD-BC-21,Matadi,CD-BC,Kongo Central,pFhuqRaXTSO,dhis2,Kongo-Central,dKdrd8HqZWz,278325
+CD-BC-22,Mbanza Ngungu,CD-BC,Kongo Central,PDfWsEoWLcy,dhis2,Kongo-Central,dKdrd8HqZWz,255472
+CD-BC-23,Moanda,CD-BC,Kongo Central,Zbg4fiy6f3t,dhis2,Kongo-Central,dKdrd8HqZWz,348709
+CD-BC-24,Ngidinga,CD-BC,Kongo Central,fuiphWnOGii,dhis2,Kongo-Central,dKdrd8HqZWz,197210
+CD-BC-25,Nselo,CD-BC,Kongo Central,TqMyBh0yNwZ,dhis2,Kongo-Central,dKdrd8HqZWz,114044
+CD-BC-26,Nsona Mpangu,CD-BC,Kongo Central,n0NjjahdTLk,dhis2,Kongo-Central,dKdrd8HqZWz,163276
+CD-BC-27,Nzanza,CD-BC,Kongo Central,JBCsFIBR2IO,dhis2,Kongo-Central,dKdrd8HqZWz,92615
+CD-BC-28,Seke Banza,CD-BC,Kongo Central,fWrUdkX9JEv,dhis2,Kongo-Central,dKdrd8HqZWz,191286
+CD-BC-29,Sona Bata,CD-BC,Kongo Central,RJDVdKIftDZ,dhis2,Kongo-Central,dKdrd8HqZWz,117009
+CD-BC-30,Tshela,CD-BC,Kongo Central,hniXpSX7Zrq,dhis2,Kongo-Central,dKdrd8HqZWz,74762
+CD-BC-31,Vaku,CD-BC,Kongo Central,ZRDAZVZ4HMV,dhis2,Kongo-Central,dKdrd8HqZWz,67324
+CD-BU-01,Aketi,CD-BU,Bas Uele,LOm8B3vy1qR,dhis2,Bas-Uele,rWrCdr321Qu,173085
+CD-BU-02,Ango,CD-BU,Bas Uele,rLPkZegjzaS,dhis2,Bas-Uele,rWrCdr321Qu,196503
+CD-BU-03,Bili,CD-BU,Bas Uele,CO06cO2i4Nm,dhis2,Bas-Uele,rWrCdr321Qu,111178
+CD-BU-04,Bondo,CD-BU,Bas Uele,ebKZ38Ejpb5,dhis2,Bas-Uele,rWrCdr321Qu,335737
+CD-BU-05,Buta,CD-BU,Bas Uele,pggZxV6O3iF,dhis2,Bas-Uele,rWrCdr321Qu,236356
+CD-BU-06,Ganga,CD-BU,Bas Uele,QU7amTjhWlQ,dhis2,Bas-Uele,rWrCdr321Qu,186752
+CD-BU-07,Likati,CD-BU,Bas Uele,wqWNVs3uxpv,dhis2,Bas-Uele,rWrCdr321Qu,157260
+CD-BU-08,Monga,CD-BU,Bas Uele,jFTjaBOa844,dhis2,Bas-Uele,rWrCdr321Qu,124760
+CD-BU-09,Poko,CD-BU,Bas Uele,iqV2dwy0B1b,dhis2,Bas-Uele,rWrCdr321Qu,292111
+CD-BU-10,Titule,CD-BU,Bas Uele,EgtXyZdGsLP,dhis2,Bas-Uele,rWrCdr321Qu,65101
+CD-BU-11,Viadana,CD-BU,Bas Uele,joxrJQ6anPt,dhis2,Bas-Uele,rWrCdr321Qu,146613
+CD-EQ-01,Basankusu,CD-EQ,Equateur,rxk1YvYKi7j,dhis2,Equateur,XjeRGfqHMrl,212111
+CD-EQ-02,Bikoro,CD-EQ,Equateur,NMRFBOfk41A,dhis2,Equateur,XjeRGfqHMrl,134242
+CD-EQ-03,Bolenge,CD-EQ,Equateur,MMnBp2lllhf,dhis2,Equateur,XjeRGfqHMrl,96185
+CD-EQ-04,Bolomba,CD-EQ,Equateur,lW6uPgrLYfi,dhis2,Equateur,XjeRGfqHMrl,245167
+CD-EQ-05,Bomongo,CD-EQ,Equateur,dseqqnd0Nuw,dhis2,Equateur,XjeRGfqHMrl,232687
+CD-EQ-06,Djombo,CD-EQ,Equateur,gcWEhRl00iJ,dhis2,Equateur,XjeRGfqHMrl,83672
+CD-EQ-07,Iboko,CD-EQ,Equateur,QltsFPvfG7J,dhis2,Equateur,XjeRGfqHMrl,96362
+CD-EQ-08,Ingende,CD-EQ,Equateur,ER2ozdS2Ysm,dhis2,Equateur,XjeRGfqHMrl,172231
+CD-EQ-09,Irebu,CD-EQ,Equateur,p40o8g3kdQL,dhis2,Equateur,XjeRGfqHMrl,40618
+CD-EQ-10,Lilanga Bobangi,CD-EQ,Equateur,N1S6mK9QTE5,dhis2,Equateur,XjeRGfqHMrl,98789
+CD-EQ-11,Lolanga Mampoko,CD-EQ,Equateur,pBzecjfopeA,dhis2,Equateur,XjeRGfqHMrl,122986
+CD-EQ-12,Lotumbe,CD-EQ,Equateur,CeO42blQ92C,dhis2,Equateur,XjeRGfqHMrl,126997
+CD-EQ-13,Lukolela,CD-EQ,Equateur,hH0vfyk0M5B,dhis2,Equateur,XjeRGfqHMrl,190111
+CD-EQ-14,Makanza,CD-EQ,Equateur,nXXpnAQ8M3v,dhis2,Equateur,XjeRGfqHMrl,282715
+CD-EQ-15,Mbandaka,CD-EQ,Equateur,DmRUZqBRNzB,dhis2,Equateur,XjeRGfqHMrl,256526
+CD-EQ-16,Monieka,CD-EQ,Equateur,FXSygz18Lfk,dhis2,Equateur,XjeRGfqHMrl,55226
+CD-EQ-17,Ntondo,CD-EQ,Equateur,Tt7ZtAGLNOp,dhis2,Equateur,XjeRGfqHMrl,53531
+CD-EQ-18,Wangata,CD-EQ,Equateur,J0LvPM9HPVN,dhis2,Equateur,XjeRGfqHMrl,239001
+CD-HK-01,Kafubu,CD-HK,Haut Katanga,GpdRlogsSiE,dhis2,Haut-Katanga,F9w3VW1cQmb,152562
+CD-HK-02,Kamalondo,CD-HK,Haut Katanga,uocpzPZHiEo,dhis2,Haut-Katanga,F9w3VW1cQmb,26703
+CD-HK-03,Kambove,CD-HK,Haut Katanga,NR5cDy2jhiJ,dhis2,Haut-Katanga,F9w3VW1cQmb,86766
+CD-HK-04,Kampemba,CD-HK,Haut Katanga,zMfBT8xVQeH,dhis2,Haut-Katanga,F9w3VW1cQmb,408629
+CD-HK-05,Kapolowe,CD-HK,Haut Katanga,bAFJ18IAf2S,dhis2,Haut-Katanga,F9w3VW1cQmb,113551
+CD-HK-06,Kasenga,CD-HK,Haut Katanga,Vue5tcMpaGh,dhis2,Haut-Katanga,F9w3VW1cQmb,194038
+CD-HK-07,Kashobwe,CD-HK,Haut Katanga,OcTqzK4K1RV,dhis2,Haut-Katanga,F9w3VW1cQmb,152407
+CD-HK-08,Katuba,CD-HK,Haut Katanga,nhdQUgOeBQU,dhis2,Haut-Katanga,F9w3VW1cQmb,114889
+CD-HK-09,Kenya,CD-HK,Haut Katanga,IOin37HS2Wz,dhis2,Haut-Katanga,F9w3VW1cQmb,160498
+CD-HK-10,Kikula,CD-HK,Haut Katanga,Q22qlkhPQDO,dhis2,Haut-Katanga,F9w3VW1cQmb,92680
+CD-HK-11,Kilela Balanda,CD-HK,Haut Katanga,Kth7MQGYcrE,dhis2,Haut-Katanga,F9w3VW1cQmb,97403
+CD-HK-12,Kilwa,CD-HK,Haut Katanga,iHmCGdXARXG,dhis2,Haut-Katanga,F9w3VW1cQmb,540259
+CD-HK-13,Kipushi,CD-HK,Haut Katanga,ZMH0kkBQFs9,dhis2,Haut-Katanga,F9w3VW1cQmb,192229
+CD-HK-14,Kisanga,CD-HK,Haut Katanga,QA2FRWLQqWE,dhis2,Haut-Katanga,F9w3VW1cQmb,352462
+CD-HK-15,Kowe,CD-HK,Haut Katanga,sAsXOxkBdrE,dhis2,Haut-Katanga,F9w3VW1cQmb,14356
+CD-HK-16,Likasi,CD-HK,Haut Katanga,fQLRnttyYlx,dhis2,Haut-Katanga,F9w3VW1cQmb,40935
+CD-HK-17,Lubumbashi,CD-HK,Haut Katanga,H8vCqAKUlyX,dhis2,Haut-Katanga,F9w3VW1cQmb,447350
+CD-HK-18,Lukafu,CD-HK,Haut Katanga,nNFVLFmkaAz,dhis2,Haut-Katanga,F9w3VW1cQmb,147983
+CD-HK-19,Manika,CD-HK,Haut Katanga,xMdqjEKgZLw,dhis2,Lualaba,dJ3v8xc6ZIK,760057
+CD-HK-20,Mitwaba,CD-HK,Haut Katanga,rYWmyhhl1LP,dhis2,Haut-Katanga,F9w3VW1cQmb,163463
+CD-HK-21,Mufunga Sampwe,CD-HK,Haut Katanga,qzQdkny6PZ4,dhis2,Haut-Katanga,F9w3VW1cQmb,243165
+CD-HK-22,Mumbunda,CD-HK,Haut Katanga,QteKQ66ixqO,dhis2,Haut-Katanga,F9w3VW1cQmb,438067
+CD-HK-23,Panda,CD-HK,Haut Katanga,EofZhh5yYMG,dhis2,Haut-Katanga,F9w3VW1cQmb,35741
+CD-HK-24,Pweto,CD-HK,Haut Katanga,fdlN13eHB5u,dhis2,Haut-Katanga,F9w3VW1cQmb,355478
+CD-HK-25,Rwashi,CD-HK,Haut Katanga,YFSLTwHFlOk,dhis2,Haut-Katanga,F9w3VW1cQmb,421794
+CD-HK-26,Sakania,CD-HK,Haut Katanga,CSwaGvyMS6Z,dhis2,Haut-Katanga,F9w3VW1cQmb,270639
+CD-HK-27,Tshamilemba,CD-HK,Haut Katanga,BdGu22qs6aS,dhis2,Haut-Katanga,F9w3VW1cQmb,190929
+CD-HK-28,Vangu,CD-HK,Haut Katanga,uIuYpiQm6m8,dhis2,Haut-Katanga,F9w3VW1cQmb,35035
+CD-HL-01,Baka,CD-HL,Haut Lomami,OyzUIt0IaeY,dhis2,Haut-Lomami,fEKDiQIuqeE,25217
+CD-HL-02,Bukama,CD-HL,Haut Lomami,glucPFMOELN,dhis2,Haut-Lomami,fEKDiQIuqeE,308979
+CD-HL-03,Butumba,CD-HL,Haut Lomami,FWbGIJwFtFw,dhis2,Haut-Lomami,fEKDiQIuqeE,231713
+CD-HL-04,Kabondo Dianda,CD-HL,Haut Lomami,BU8zas1K8mi,dhis2,Haut-Lomami,fEKDiQIuqeE,261330
+CD-HL-05,Kabongo,CD-HL,Haut Lomami,kWcBPRsa7lA,name,Haut-Lomami,fEKDiQIuqeE,451314
+CD-HL-06,Kamina,CD-HL,Haut Lomami,T0YXktZkPCF,dhis2,Haut-Lomami,fEKDiQIuqeE,393064
+CD-HL-07,Kaniama,CD-HL,Haut Lomami,guov7iiEM6c,dhis2,Haut-Lomami,fEKDiQIuqeE,364542
+CD-HL-08,Kayamba,CD-HL,Haut Lomami,RonTeRt1of5,dhis2,Haut-Lomami,fEKDiQIuqeE,100668
+CD-HL-09,Kinda,CD-HL,Haut Lomami,i1aUdilicx5,dhis2,Haut-Lomami,fEKDiQIuqeE,91393
+CD-HL-10,Kinkondja,CD-HL,Haut Lomami,qZdoTKoMddO,dhis2,Haut-Lomami,fEKDiQIuqeE,305191
+CD-HL-11,Kitenge,CD-HL,Haut Lomami,mSpktJNvGmQ,dhis2,Haut-Lomami,fEKDiQIuqeE,385655
+CD-HL-12,Lwamba,CD-HL,Haut Lomami,QZr08cvgmWI,dhis2,Haut-Lomami,fEKDiQIuqeE,156217
+CD-HL-13,Malemba,CD-HL,Haut Lomami,N3b4xbGIP6r,dhis2,Haut-Lomami,fEKDiQIuqeE,445078
+CD-HL-14,Mukanga,CD-HL,Haut Lomami,XdR0dqdFNt4,dhis2,Haut-Lomami,fEKDiQIuqeE,290028
+CD-HL-15,Mulongo,CD-HL,Haut Lomami,hdDyVXgN46J,dhis2,Haut-Lomami,fEKDiQIuqeE,215839
+CD-HL-16,Songa,CD-HL,Haut Lomami,cgc7FkCPcKb,dhis2,Haut-Lomami,fEKDiQIuqeE,199846
+CD-HU-01,Aba,CD-HU,Haut Uele,NC2xavZLq2a,dhis2,Haut-Uele,wy1lwIP18SL,202310
+CD-HU-02,Boma Mangbetu,CD-HU,Haut Uele,qwBasnNFRFW,dhis2,Haut-Uele,wy1lwIP18SL,221729
+CD-HU-03,Doruma,CD-HU,Haut Uele,ZEGVJVjXJJW,dhis2,Haut-Uele,wy1lwIP18SL,138867
+CD-HU-04,Dungu,CD-HU,Haut Uele,GkqfQB4CBwt,dhis2,Haut-Uele,wy1lwIP18SL,284178
+CD-HU-05,Faradje,CD-HU,Haut Uele,H0UZDpNtJ17,dhis2,Haut-Uele,wy1lwIP18SL,236378
+CD-HU-06,Gombari,CD-HU,Haut Uele,h1dItcsoHRw,dhis2,Haut-Uele,wy1lwIP18SL,204166
+CD-HU-07,Isiro,CD-HU,Haut Uele,lW6NlTXqGcv,dhis2,Haut-Uele,wy1lwIP18SL,453776
+CD-HU-08,Makoro,CD-HU,Haut Uele,yNXb6VSdyPw,dhis2,Haut-Uele,wy1lwIP18SL,313907
+CD-HU-09,Niangara,CD-HU,Haut Uele,PDPn74NtJzs,dhis2,Haut-Uele,wy1lwIP18SL,171606
+CD-HU-10,Pawa,CD-HU,Haut Uele,ZxQY9szHMx5,dhis2,Haut-Uele,wy1lwIP18SL,289441
+CD-HU-11,Rungu,CD-HU,Haut Uele,EGoMVOvVUAp,dhis2,Haut-Uele,wy1lwIP18SL,170221
+CD-HU-12,Wamba,CD-HU,Haut Uele,ET5R8zSN3gm,dhis2,Haut-Uele,wy1lwIP18SL,257106
+CD-HU-13,Watsa,CD-HU,Haut Uele,mS2mByLHkzL,dhis2,Haut-Uele,wy1lwIP18SL,475276
+CD-IT-01,Adi,CD-IT,Ituri,QAjDPUD5eCo,dhis2,Ituri,Q4cbnIAo10f,508449
+CD-IT-02,Adja,CD-IT,Ituri,CLboGR4F3lj,dhis2,Ituri,Q4cbnIAo10f,200890
+CD-IT-03,Angumu,CD-IT,Ituri,yKlg7zZ2xlH,dhis2,Ituri,Q4cbnIAo10f,240102
+CD-IT-04,Ariwara,CD-IT,Ituri,fM8IqjhdeyL,dhis2,Ituri,Q4cbnIAo10f,657710
+CD-IT-05,Aru,CD-IT,Ituri,v8PqffapuVl,dhis2,Ituri,Q4cbnIAo10f,666247
+CD-IT-06,Aungba,CD-IT,Ituri,DFcltLEKLxj,dhis2,Ituri,Q4cbnIAo10f,426476
+CD-IT-07,Bambu,CD-IT,Ituri,Uc3GqWS8C0w,dhis2,Ituri,Q4cbnIAo10f,196691
+CD-IT-08,Biringi,CD-IT,Ituri,yS0pmMtanuT,dhis2,Ituri,Q4cbnIAo10f,237934
+CD-IT-09,Boga,CD-IT,Ituri,rLadlFjzCh7,dhis2,Ituri,Q4cbnIAo10f,37348
+CD-IT-10,Bunia,CD-IT,Ituri,GPi6i83o7l6,dhis2,Ituri,Q4cbnIAo10f,663220
+CD-IT-11,Damas,CD-IT,Ituri,ApdB8z3Wrxt,dhis2,Ituri,Q4cbnIAo10f,111794
+CD-IT-12,Drodro,CD-IT,Ituri,OIhgsXcZf6x,dhis2,Ituri,Q4cbnIAo10f,149444
+CD-IT-13,Fataki,CD-IT,Ituri,FDNwbfrJhkA,dhis2,Ituri,Q4cbnIAo10f,211279
+CD-IT-14,Gethy,CD-IT,Ituri,X8zFJ7DJlRD,dhis2,Ituri,Q4cbnIAo10f,257572
+CD-IT-15,Jiba,CD-IT,Ituri,mgcXmrrvCZr,dhis2,Ituri,Q4cbnIAo10f,119563
+CD-IT-16,Kambala,CD-IT,Ituri,SkEKQLSulmp,dhis2,Ituri,Q4cbnIAo10f,209275
+CD-IT-17,Kilo,CD-IT,Ituri,sbyWSsdZ3tj,dhis2,Ituri,Q4cbnIAo10f,54608
+CD-IT-18,Komanda,CD-IT,Ituri,i2mtQy4nTmD,dhis2,Ituri,Q4cbnIAo10f,171927
+CD-IT-19,Laybo,CD-IT,Ituri,n1N4M95juaC,dhis2,Ituri,Q4cbnIAo10f,341958
+CD-IT-20,Linga,CD-IT,Ituri,K0KK2tBPIRA,dhis2,Ituri,Q4cbnIAo10f,137570
+CD-IT-21,Lita,CD-IT,Ituri,xGWcGHazqtw,dhis2,Ituri,Q4cbnIAo10f,142295
+CD-IT-22,Logo,CD-IT,Ituri,qqGoQGSp1Dw,dhis2,Ituri,Q4cbnIAo10f,419981
+CD-IT-23,Lolwa,CD-IT,Ituri,xp3Y1OXHZLj,dhis2,Ituri,Q4cbnIAo10f,43617
+CD-IT-24,Mahagi,CD-IT,Ituri,seNn0NUsKYn,dhis2,Ituri,Q4cbnIAo10f,396456
+CD-IT-25,Mambasa,CD-IT,Ituri,RjHZChl5gJQ,dhis2,Ituri,Q4cbnIAo10f,167743
+CD-IT-26,Mandima,CD-IT,Ituri,YpXUkTbtAPA,dhis2,Ituri,Q4cbnIAo10f,197939
+CD-IT-27,Mangala,CD-IT,Ituri,YTZmP8g33YJ,dhis2,Ituri,Q4cbnIAo10f,139346
+CD-IT-28,Mongbwalu,CD-IT,Ituri,nv8tx681Gjd,dhis2,Ituri,Q4cbnIAo10f,223977
+CD-IT-29,Nia Nia,CD-IT,Ituri,tWlaqwSUheI,dhis2,Ituri,Q4cbnIAo10f,128975
+CD-IT-30,Nizi,CD-IT,Ituri,TCE5waEW7Fi,dhis2,Ituri,Q4cbnIAo10f,202136
+CD-IT-31,Nyankunde,CD-IT,Ituri,mGTaa8TFifO,dhis2,Ituri,Q4cbnIAo10f,81984
+CD-IT-32,Nyarambe,CD-IT,Ituri,gyRgzU4sTgY,dhis2,Ituri,Q4cbnIAo10f,426970
+CD-IT-33,Rethy,CD-IT,Ituri,hWMdKGgsAIz,dhis2,Ituri,Q4cbnIAo10f,283548
+CD-IT-34,Rimba,CD-IT,Ituri,a2aJcbwnjoK,dhis2,Ituri,Q4cbnIAo10f,377892
+CD-IT-35,Rwampara,CD-IT,Ituri,vPxN2nZnBXK,dhis2,Ituri,Q4cbnIAo10f,322396
+CD-IT-36,Tchomia,CD-IT,Ituri,rhj4btTd3i0,dhis2,Ituri,Q4cbnIAo10f,125286
+CD-KC-01,Bena Leka,CD-KC,Kasai Central,HYPBUncgldT,dhis2,Kasaï-Central,I8CuQpdBQfP,311270
+CD-KC-02,Bena Tshiadi,CD-KC,Kasai Central,CXIGn9khu8A,dhis2,Kasaï-Central,I8CuQpdBQfP,157097
+CD-KC-03,Bilomba,CD-KC,Kasai Central,FwiMpLozKls,dhis2,Kasaï-Central,I8CuQpdBQfP,117062
+CD-KC-04,Bobozo,CD-KC,Kasai Central,MlE1k08houk,dhis2,Kasaï-Central,I8CuQpdBQfP,15645
+CD-KC-05,Bunkonde,CD-KC,Kasai Central,Al39AWPqFCc,dhis2,Kasaï-Central,I8CuQpdBQfP,117516
+CD-KC-06,Demba,CD-KC,Kasai Central,F8Spet7wqMK,dhis2,Kasaï-Central,I8CuQpdBQfP,376936
+CD-KC-07,Dibaya,CD-KC,Kasai Central,kye1r2XW3YV,dhis2,Kasaï-Central,I8CuQpdBQfP,203144
+CD-KC-08,Kalomba,CD-KC,Kasai Central,r9jRmNpYalx,dhis2,Kasaï-Central,I8CuQpdBQfP,93903
+CD-KC-09,Kananga,CD-KC,Kasai Central,m2DHxGhogWK,dhis2,Kasaï-Central,I8CuQpdBQfP,361977
+CD-KC-10,Katende,CD-KC,Kasai Central,Ko8qaFXjOIM,dhis2,Kasaï-Central,I8CuQpdBQfP,162099
+CD-KC-11,Katoka,CD-KC,Kasai Central,dwBRSfVBpk6,dhis2,Kasaï-Central,I8CuQpdBQfP,118957
+CD-KC-12,Luambo,CD-KC,Kasai Central,lRLzCt3aMHM,dhis2,Kasaï-Central,I8CuQpdBQfP,250531
+CD-KC-13,Lubondaie,CD-KC,Kasai Central,ZIEdn6Pptv7,dhis2,Kasaï-Central,I8CuQpdBQfP,131444
+CD-KC-14,Lubunga,CD-KC,Kasai Central,FTamklKvHl5,dhis2,Kasaï-Central,I8CuQpdBQfP,153786
+CD-KC-15,Luiza,CD-KC,Kasai Central,etpyShZCZEs,dhis2,Kasaï-Central,I8CuQpdBQfP,224787
+CD-KC-16,Lukonga,CD-KC,Kasai Central,SAt8yoeSMjD,dhis2,Kasaï-Central,I8CuQpdBQfP,169009
+CD-KC-17,Masuika,CD-KC,Kasai Central,hi9gSpIVzai,dhis2,Kasaï-Central,I8CuQpdBQfP,264725
+CD-KC-18,Mikalayi,CD-KC,Kasai Central,csMZZqDFCvW,dhis2,Kasaï-Central,I8CuQpdBQfP,315447
+CD-KC-19,Muetshi,CD-KC,Kasai Central,Ied3F9RYVfg,dhis2,Kasaï-Central,I8CuQpdBQfP,154584
+CD-KC-20,Mutoto,CD-KC,Kasai Central,QtlqWolz843,dhis2,Kasaï-Central,I8CuQpdBQfP,104951
+CD-KC-21,Ndekesha,CD-KC,Kasai Central,mixGG8ryrT9,dhis2,Kasaï-Central,I8CuQpdBQfP,194624
+CD-KC-22,Ndesha,CD-KC,Kasai Central,wq3tWiKJkNr,dhis2,Kasaï-Central,I8CuQpdBQfP,85031
+CD-KC-23,Tshibala,CD-KC,Kasai Central,AH4FtBD4MqK,dhis2,Kasaï-Central,I8CuQpdBQfP,151353
+CD-KC-24,Tshikaji,CD-KC,Kasai Central,U6rNBblejC5,dhis2,Kasaï-Central,I8CuQpdBQfP,178551
+CD-KC-25,Tshikula,CD-KC,Kasai Central,k3UBz1nclY7,dhis2,Kasaï-Central,I8CuQpdBQfP,149910
+CD-KC-26,Yangala,CD-KC,Kasai Central,OxPPcQLweov,dhis2,Kasaï-Central,I8CuQpdBQfP,179843
+CD-KE-01,Bibanga,CD-KE,Kasai Oriental,pzMw9DUQ6An,dhis2,Kasaï-Oriental,fgHCmGhaP2X,268736
+CD-KE-02,Bipemba,CD-KE,Kasai Oriental,xx5xiY5vVBa,dhis2,Kasaï-Oriental,fgHCmGhaP2X,98844
+CD-KE-03,Bonzola,CD-KE,Kasai Oriental,ZxyZ7L3ynso,dhis2,Kasaï-Oriental,fgHCmGhaP2X,175602
+CD-KE-04,Cilundu,CD-KE,Kasai Oriental,GZJ4wCF5dr8,dhis2,Kasaï-Oriental,fgHCmGhaP2X,221624
+CD-KE-05,Dibindi,CD-KE,Kasai Oriental,Z5I1TvCKVcG,dhis2,Kasaï-Oriental,fgHCmGhaP2X,99339
+CD-KE-06,Diulu,CD-KE,Kasai Oriental,f1b3q0aLFzW,dhis2,Kasaï-Oriental,fgHCmGhaP2X,111846
+CD-KE-07,Kabeya Kamuanga,CD-KE,Kasai Oriental,k7iudxSjdn7,dhis2,Kasaï-Oriental,fgHCmGhaP2X,377061
+CD-KE-08,Kansele,CD-KE,Kasai Oriental,HN9etyIXrEE,dhis2,Kasaï-Oriental,fgHCmGhaP2X,79602
+CD-KE-09,Kasansa,CD-KE,Kasai Oriental,w9GBwODOJNY,dhis2,Kasaï-Oriental,fgHCmGhaP2X,396871
+CD-KE-10,Lubilanji,CD-KE,Kasai Oriental,FvSLntNvpao,dhis2,Kasaï-Oriental,fgHCmGhaP2X,90031
+CD-KE-11,Lukelenge,CD-KE,Kasai Oriental,ucEXrvC3lau,dhis2,Kasaï-Oriental,fgHCmGhaP2X,130415
+CD-KE-12,Miabi,CD-KE,Kasai Oriental,vyzwR6KnN2M,dhis2,Kasaï-Oriental,fgHCmGhaP2X,171425
+CD-KE-13,Mpokolo,CD-KE,Kasai Oriental,v4bwDhzBFks,dhis2,Kasaï-Oriental,fgHCmGhaP2X,108178
+CD-KE-14,Mukumbi,CD-KE,Kasai Oriental,L4fvzJb0ijt,dhis2,Kasaï-Oriental,fgHCmGhaP2X,207508
+CD-KE-15,Muya,CD-KE,Kasai Oriental,HllryitwQ4u,dhis2,Kasaï-Oriental,fgHCmGhaP2X,94897
+CD-KE-16,Nzaba,CD-KE,Kasai Oriental,amSVlGShY91,dhis2,Kasaï-Oriental,fgHCmGhaP2X,179973
+CD-KE-17,Tshilenge,CD-KE,Kasai Oriental,sxo8WzGfbXk,dhis2,Kasaï-Oriental,fgHCmGhaP2X,344433
+CD-KE-18,Tshishimbi,CD-KE,Kasai Oriental,PuF5BL8Npna,dhis2,Kasaï-Oriental,fgHCmGhaP2X,171400
+CD-KE-19,Tshitenge,CD-KE,Kasai Oriental,EpoRodQJ1La,name,Kasaï-Oriental,fgHCmGhaP2X,169399
+CD-KG-01,Boko,CD-KG,Kwango,tUhIQ4MVPVI,dhis2,Kwango,PvtAI4RUMkr,196625
+CD-KG-02,Feshi,CD-KG,Kwango,vyNZCFIed9O,dhis2,Kwango,PvtAI4RUMkr,189742
+CD-KG-03,Kahemba,CD-KG,Kwango,JkaDYyGpdPX,dhis2,Kwango,PvtAI4RUMkr,170702
+CD-KG-04,Kajiji,CD-KG,Kwango,LhkH0lpHnU0,dhis2,Kwango,PvtAI4RUMkr,106581
+CD-KG-05,Kasongo Lunda,CD-KG,Kwango,eIpu2GCPTIP,dhis2,Kwango,PvtAI4RUMkr,131982
+CD-KG-06,Kenge,CD-KG,Kwango,Qx104OFTrS6,dhis2,Kwango,PvtAI4RUMkr,350464
+CD-KG-07,Kimbau,CD-KG,Kwango,lJaJ763sqNI,dhis2,Kwango,PvtAI4RUMkr,162598
+CD-KG-08,Kisanji,CD-KG,Kwango,ni4XTmpzmVX,dhis2,Kwango,PvtAI4RUMkr,90738
+CD-KG-09,Kitenda,CD-KG,Kwango,c66ur6Nda04,dhis2,Kwango,PvtAI4RUMkr,107097
+CD-KG-10,Mwela Lembwa,CD-KG,Kwango,jzvghlGm7Hp,dhis2,Kwango,PvtAI4RUMkr,75547
+CD-KG-11,Panzi,CD-KG,Kwango,Kl436vOuc9s,dhis2,Kwango,PvtAI4RUMkr,199860
+CD-KG-12,Popokabaka,CD-KG,Kwango,Otc087GDtkQ,dhis2,Kwango,PvtAI4RUMkr,209297
+CD-KG-13,Tembo,CD-KG,Kwango,dazaa6QjHa1,dhis2,Kwango,PvtAI4RUMkr,101229
+CD-KG-14,Wamba Lwadi,CD-KG,Kwango,xUfv1fcnAmb,dhis2,Kwango,PvtAI4RUMkr,113263
+CD-KL-01,Bagata,CD-KL,Kwilu,k06WV7FTN9D,dhis2,Kwilu,BmKjwqc6BEw,198753
+CD-KL-02,Bandundu,CD-KL,Kwilu,KJPFKwgcqyd,dhis2,Kwilu,BmKjwqc6BEw,270291
+CD-KL-03,Bulungu,CD-KL,Kwilu,e6Wpbl5nqcD,dhis2,Kwilu,BmKjwqc6BEw,363012
+CD-KL-04,Djuma,CD-KL,Kwilu,IgSLfQbGSnF,dhis2,Kwilu,BmKjwqc6BEw,260417
+CD-KL-05,Gungu,CD-KL,Kwilu,GuAIPcinFIj,dhis2,Kwilu,BmKjwqc6BEw,269365
+CD-KL-06,Idiofa,CD-KL,Kwilu,riGgtQ9beB5,dhis2,Kwilu,BmKjwqc6BEw,335602
+CD-KL-07,Ipamu,CD-KL,Kwilu,jSLnBqCXCzW,dhis2,Kwilu,BmKjwqc6BEw,299380
+CD-KL-08,Kikongo,CD-KL,Kwilu,DrEgd3k7YFu,dhis2,Kwilu,BmKjwqc6BEw,210665
+CD-KL-09,Kikwit Nord,CD-KL,Kwilu,GaaOhIJU3Bx,dhis2,Kwilu,BmKjwqc6BEw,244132
+CD-KL-10,Kikwit Sud,CD-KL,Kwilu,Y8Hlj8DpZHc,dhis2,Kwilu,BmKjwqc6BEw,225142
+CD-KL-11,Kimputu,CD-KL,Kwilu,GaFyM05saxx,dhis2,Kwilu,BmKjwqc6BEw,231049
+CD-KL-12,Kingandu,CD-KL,Kwilu,QVjGTE0nOen,dhis2,Kwilu,BmKjwqc6BEw,141207
+CD-KL-13,Koshibanda,CD-KL,Kwilu,O3KmMLK10ru,dhis2,Kwilu,BmKjwqc6BEw,271193
+CD-KL-14,Lusanga,CD-KL,Kwilu,WziDY5wD1fX,dhis2,Kwilu,BmKjwqc6BEw,421019
+CD-KL-15,Masi Manimba,CD-KL,Kwilu,VYlgP4yyY7F,dhis2,Kwilu,BmKjwqc6BEw,326708
+CD-KL-16,Moanza,CD-KL,Kwilu,N1K2MB4mUJ8,dhis2,Kwilu,BmKjwqc6BEw,221005
+CD-KL-17,Mokala,CD-KL,Kwilu,tPnKr9Z2phW,dhis2,Kwilu,BmKjwqc6BEw,288503
+CD-KL-18,Mosango,CD-KL,Kwilu,JRaVxSGfJ9Z,dhis2,Kwilu,BmKjwqc6BEw,158052
+CD-KL-19,Mukedi,CD-KL,Kwilu,Tt1rjDuQtRh,dhis2,Kwilu,BmKjwqc6BEw,288006
+CD-KL-20,Mungindu,CD-KL,Kwilu,CyHuq664hCU,dhis2,Kwilu,BmKjwqc6BEw,155413
+CD-KL-21,Pay Kongila,CD-KL,Kwilu,smw3DtURc1n,dhis2,Kwilu,BmKjwqc6BEw,201211
+CD-KL-22,Sia,CD-KL,Kwilu,poOqTlUDT0A,dhis2,Kwilu,BmKjwqc6BEw,116341
+CD-KL-23,Vanga,CD-KL,Kwilu,fXTBfVcge4w,dhis2,Kwilu,BmKjwqc6BEw,398186
+CD-KL-24,Yasa Bonga,CD-KL,Kwilu,NxFuYzZy7Bn,dhis2,Kwilu,BmKjwqc6BEw,274060
+CD-KN-01,Bandalungwa,CD-KN,Kinshasa,BjbUZ5acV7t,name,Kinshasa,TwSa8zUu09Q,99583
+CD-KN-02,Barumbu,CD-KN,Kinshasa,uw3SOxNTDP4,dhis2,Kinshasa,TwSa8zUu09Q,77214
+CD-KN-03,Binza Meteo,CD-KN,Kinshasa,ShcGSNMpF7z,dhis2,Kinshasa,TwSa8zUu09Q,409683
+CD-KN-04,Binza Ozone,CD-KN,Kinshasa,m5B0okd0KaZ,dhis2,Kinshasa,TwSa8zUu09Q,421571
+CD-KN-05,Biyela,CD-KN,Kinshasa,QzpHCAKe31e,dhis2,Kinshasa,TwSa8zUu09Q,283616
+CD-KN-06,Bumbu,CD-KN,Kinshasa,sZ2goXLKmQX,dhis2,Kinshasa,TwSa8zUu09Q,157176
+CD-KN-07,Gombe,CD-KN,Kinshasa,L3vMLScAbZ6,dhis2,Kinshasa,TwSa8zUu09Q,87619
+CD-KN-08,Kalamu I,CD-KN,Kinshasa,D1jF9OzETge,dhis2,Kinshasa,TwSa8zUu09Q,93461
+CD-KN-09,Kalamu II,CD-KN,Kinshasa,Z3DMBdrM8Df,dhis2,Kinshasa,TwSa8zUu09Q,77016
+CD-KN-10,Kasa Vubu,CD-KN,Kinshasa,TuzDrpZ9zzl,dhis2,Kinshasa,TwSa8zUu09Q,58879
+CD-KN-11,Kikimi,CD-KN,Kinshasa,wTaqhPcijDM,dhis2,Kinshasa,TwSa8zUu09Q,227158
+CD-KN-12,Kimbanseke,CD-KN,Kinshasa,cycttnJlR4L,dhis2,Kinshasa,TwSa8zUu09Q,257732
+CD-KN-13,Kingabwa,CD-KN,Kinshasa,NwNyAitXVsr,dhis2,Kinshasa,TwSa8zUu09Q,190126
+CD-KN-14,Kingasani,CD-KN,Kinshasa,ZTt8HbFGrY4,dhis2,Kinshasa,TwSa8zUu09Q,124858
+CD-KN-15,Kinshasa,CD-KN,Kinshasa,xZy8t34pvs6,name,Kinshasa,TwSa8zUu09Q,72959
+CD-KN-16,Kintambo,CD-KN,Kinshasa,oeP2sQLMCuy,name,Kinshasa,TwSa8zUu09Q,74504
+CD-KN-17,Kisenso,CD-KN,Kinshasa,Vv9L3W7VMrX,dhis2,Kinshasa,TwSa8zUu09Q,304550
+CD-KN-18,Kokolo,CD-KN,Kinshasa,Ab6jrKWO5EZ,dhis2,Kinshasa,TwSa8zUu09Q,147921
+CD-KN-19,Lemba,CD-KN,Kinshasa,tCLXgZBBLQ0,dhis2,Kinshasa,TwSa8zUu09Q,244235
+CD-KN-20,Limete,CD-KN,Kinshasa,JhJFxKnFvmJ,dhis2,Kinshasa,TwSa8zUu09Q,211130
+CD-KN-21,Lingwala,CD-KN,Kinshasa,qbe5m6fVfMT,dhis2,Kinshasa,TwSa8zUu09Q,53949
+CD-KN-22,Makala,CD-KN,Kinshasa,SqWL31RNyKx,dhis2,Kinshasa,TwSa8zUu09Q,156566
+CD-KN-23,Maluku I,CD-KN,Kinshasa,tkbMhp2kIT2,dhis2,Kinshasa,TwSa8zUu09Q,247558
+CD-KN-24,Maluku II,CD-KN,Kinshasa,nq4LAyXUm8a,dhis2,Kinshasa,TwSa8zUu09Q,87548
+CD-KN-25,Masina I,CD-KN,Kinshasa,F0zQH8NbaIx,dhis2,Kinshasa,TwSa8zUu09Q,185710
+CD-KN-26,Masina II,CD-KN,Kinshasa,hL8oJfWHx3g,dhis2,Kinshasa,TwSa8zUu09Q,187968
+CD-KN-27,Matete,CD-KN,Kinshasa,UrJlHRGZGGJ,dhis2,Kinshasa,TwSa8zUu09Q,110680
+CD-KN-28,Mont Ngafula I,CD-KN,Kinshasa,ubl3NORPhsC,dhis2,Kinshasa,TwSa8zUu09Q,588593
+CD-KN-29,Mont Ngafula II,CD-KN,Kinshasa,gMhYDNcoZSe,dhis2,Kinshasa,TwSa8zUu09Q,448863
+CD-KN-30,Ndjili,CD-KN,Kinshasa,rK2ODHilbAP,dhis2,Kinshasa,TwSa8zUu09Q,211333
+CD-KN-31,Ngaba,CD-KN,Kinshasa,vvrhCzWzc0J,dhis2,Kinshasa,TwSa8zUu09Q,106104
+CD-KN-32,Ngiri Ngiri,CD-KN,Kinshasa,LSvg2jR0rEQ,dhis2,Kinshasa,TwSa8zUu09Q,78585
+CD-KN-33,Nsele,CD-KN,Kinshasa,m0D9iUAjJ1G,dhis2,Kinshasa,TwSa8zUu09Q,1156384
+CD-KN-34,Police,CD-KN,Kinshasa,kyBo3gA8qoh,dhis2,Kinshasa,TwSa8zUu09Q,44806
+CD-KN-35,Selembao,CD-KN,Kinshasa,nbSOIch7Mbc,dhis2,Kinshasa,TwSa8zUu09Q,381825
+CD-KS-01,Banga Lubaka,CD-KS,Kasai,bNFyJIkjMdY,dhis2,Kasaï,D15NtionqkH,101018
+CD-KS-02,Bulape,CD-KS,Kasai,tTRg4cT07K7,dhis2,Kasaï,D15NtionqkH,288694
+CD-KS-03,Dekese,CD-KS,Kasai,Z3lr3MOHNLH,dhis2,Kasaï,D15NtionqkH,133079
+CD-KS-04,Ilebo,CD-KS,Kasai,g9sayFS8d1p,dhis2,Kasaï,D15NtionqkH,233374
+CD-KS-05,Kakenge,CD-KS,Kasai,y1bSl3YWtJm,dhis2,Kasaï,D15NtionqkH,195717
+CD-KS-06,Kalonda Ouest,CD-KS,Kasai,jCOBMIbRlMV,dhis2,Kasaï,D15NtionqkH,301701
+CD-KS-07,Kamonia,CD-KS,Kasai,BTGp4czwZRN,dhis2,Kasaï,D15NtionqkH,331180
+CD-KS-08,Kamwesha,CD-KS,Kasai,j6OryFADgoN,name,Kasaï,D15NtionqkH,540684
+CD-KS-09,Kanzala,CD-KS,Kasai,YyPtkSv7bB3,name,Kasaï,D15NtionqkH,240000
+CD-KS-10,Kitangwa,CD-KS,Kasai,IDFKkakVBRc,dhis2,Kasaï,D15NtionqkH,138684
+CD-KS-11,Luebo,CD-KS,Kasai,d9la4YKNnto,dhis2,Kasaï,D15NtionqkH,378723
+CD-KS-12,Mikope,CD-KS,Kasai,vy2yqOs0J70,dhis2,Kasaï,D15NtionqkH,203732
+CD-KS-13,Mushenge,CD-KS,Kasai,qdhh0JFWiW2,dhis2,Kasaï,D15NtionqkH,141630
+CD-KS-14,Mutena,CD-KS,Kasai,g0UqlSRyINa,dhis2,Kasaï,D15NtionqkH,241528
+CD-KS-15,Mweka,CD-KS,Kasai,dw1XnGf2aaU,name,Kasaï,D15NtionqkH,403760
+CD-KS-16,Ndjoko Mpunda,CD-KS,Kasai,phRBB1s5LJX,dhis2,Kasaï,D15NtionqkH,192095
+CD-KS-17,Nyanga,CD-KS,Kasai,ilgYm3DfbGP,dhis2,Kasaï,D15NtionqkH,129029
+CD-KS-18,Tshikapa,CD-KS,Kasai,rsaI3zncNG9,dhis2,Kasaï,D15NtionqkH,301898
+CD-LO-01,Kabinda,CD-LO,Lomami,S7r6j8vvjBa,dhis2,Lomami,an1cK6GbbVw,440883
+CD-LO-02,Kalambayi Kabanga,CD-LO,Lomami,hyVNQXTLM57,dhis2,Lomami,an1cK6GbbVw,294484
+CD-LO-03,Kalenda,CD-LO,Lomami,vnt8fprZWxI,dhis2,Lomami,an1cK6GbbVw,351214
+CD-LO-04,Kalonda Est,CD-LO,Lomami,HDHPGpYow9n,dhis2,Lomami,an1cK6GbbVw,220464
+CD-LO-05,Kamana,CD-LO,Lomami,KxcxIF0z6y3,dhis2,Lomami,an1cK6GbbVw,245378
+CD-LO-06,Kamiji,CD-LO,Lomami,rg471npPLBo,dhis2,Lomami,an1cK6GbbVw,105277
+CD-LO-07,Kanda Kanda,CD-LO,Lomami,LREYTGTn3sk,dhis2,Lomami,an1cK6GbbVw,330118
+CD-LO-08,Lubao,CD-LO,Lomami,hhPQBTvWnWR,dhis2,Lomami,an1cK6GbbVw,240971
+CD-LO-09,Ludimbi Lukula,CD-LO,Lomami,v92Jk9YbTsC,dhis2,Lomami,an1cK6GbbVw,173855
+CD-LO-10,Luputa,CD-LO,Lomami,gYjfhzYH5ra,dhis2,Lomami,an1cK6GbbVw,426479
+CD-LO-11,Makota,CD-LO,Lomami,x0EmG1LRyjy,dhis2,Lomami,an1cK6GbbVw,127900
+CD-LO-12,Mulumba,CD-LO,Lomami,Ca5EitY4zzl,dhis2,Lomami,an1cK6GbbVw,357098
+CD-LO-13,Mwene Ditu,CD-LO,Lomami,yft32K4WOYZ,dhis2,Lomami,an1cK6GbbVw,315830
+CD-LO-14,Ngandajika,CD-LO,Lomami,TQFaajAiBvD,name,Lomami,an1cK6GbbVw,344328
+CD-LO-15,Tshofa,CD-LO,Lomami,JMyFFcdmIMU,dhis2,Lomami,an1cK6GbbVw,165432
+CD-LO-16,Wikong,CD-LO,Lomami,gMiVopcM4An,dhis2,Lomami,an1cK6GbbVw,99208
+CD-LU-01,Bunkeya,CD-LU,Lualaba,cw1CZyDiPyA,dhis2,Lualaba,dJ3v8xc6ZIK,51916
+CD-LU-02,Dilala,CD-LU,Lualaba,mSQE0BqfXOy,dhis2,Lualaba,dJ3v8xc6ZIK,642500
+CD-LU-03,Dilolo,CD-LU,Lualaba,kwvvScW5Xgj,dhis2,Lualaba,dJ3v8xc6ZIK,156721
+CD-LU-04,Fungurume,CD-LU,Lualaba,eWGgthNBOZ8,dhis2,Lualaba,dJ3v8xc6ZIK,580498
+CD-LU-05,Kafakumba,CD-LU,Lualaba,I42uxuyvTXt,dhis2,Lualaba,dJ3v8xc6ZIK,118077
+CD-LU-06,Kalamba,CD-LU,Lualaba,Ux1WH67fWJJ,dhis2,Lualaba,dJ3v8xc6ZIK,103025
+CD-LU-07,Kanzenze,CD-LU,Lualaba,yAdgorGUtcE,dhis2,Lualaba,dJ3v8xc6ZIK,262478
+CD-LU-08,Kapanga,CD-LU,Lualaba,qdhfi48INZJ,dhis2,Lualaba,dJ3v8xc6ZIK,218127
+CD-LU-09,Kasaji,CD-LU,Lualaba,kiFDojGFG3x,dhis2,Lualaba,dJ3v8xc6ZIK,254654
+CD-LU-10,Lualaba,CD-LU,Lualaba,uFV6BUpJi7E,dhis2,Lualaba,dJ3v8xc6ZIK,587515
+CD-LU-11,Lubudi,CD-LU,Lualaba,goYHUDWT3jn,dhis2,Lualaba,dJ3v8xc6ZIK,138235
+CD-LU-12,Mutshatsha,CD-LU,Lualaba,S0Ne5rWQhxw,dhis2,Lualaba,dJ3v8xc6ZIK,46958
+CD-LU-13,Sandoa,CD-LU,Lualaba,yIYFKwCgYVZ,dhis2,Lualaba,dJ3v8xc6ZIK,204071
+CD-MA-01,Alunguli,CD-MA,Maniema,w1BnPOcmluI,dhis2,Maniema,uyuwe6bqphf,134184
+CD-MA-02,Ferekeni,CD-MA,Maniema,YuGk2dXTvKj,dhis2,Maniema,uyuwe6bqphf,58344
+CD-MA-03,Kabambare,CD-MA,Maniema,ncFyk9qnjro,dhis2,Maniema,uyuwe6bqphf,106184
+CD-MA-04,Kailo,CD-MA,Maniema,ZHRREbCOGwG,dhis2,Maniema,uyuwe6bqphf,234718
+CD-MA-05,Kalima,CD-MA,Maniema,IpT4QLSAYMK,dhis2,Maniema,uyuwe6bqphf,178591
+CD-MA-06,Kampene,CD-MA,Maniema,y08g1DjhBXu,dhis2,Maniema,uyuwe6bqphf,168557
+CD-MA-07,Kasongo,CD-MA,Maniema,MRRlnyr6MW6,dhis2,Maniema,uyuwe6bqphf,314836
+CD-MA-08,Kibombo,CD-MA,Maniema,FMXSE1MWvdO,dhis2,Maniema,uyuwe6bqphf,130049
+CD-MA-09,Kindu,CD-MA,Maniema,lbUq2j3aRYh,dhis2,Maniema,uyuwe6bqphf,577034
+CD-MA-10,Kunda,CD-MA,Maniema,MMeukZwYdI1,dhis2,Maniema,uyuwe6bqphf,326562
+CD-MA-11,Lubutu,CD-MA,Maniema,HtQZ7yf79SN,dhis2,Maniema,uyuwe6bqphf,152409
+CD-MA-12,Lusangi,CD-MA,Maniema,rmoJzmAeUZq,dhis2,Maniema,uyuwe6bqphf,177080
+CD-MA-13,Obokote,CD-MA,Maniema,BsSB1PA58Qp,dhis2,Maniema,uyuwe6bqphf,53859
+CD-MA-14,Pangi,CD-MA,Maniema,ie0dbeVpvnB,dhis2,Maniema,uyuwe6bqphf,86013
+CD-MA-15,Punia,CD-MA,Maniema,EyMlz2Qvcmt,dhis2,Maniema,uyuwe6bqphf,143686
+CD-MA-16,Samba,CD-MA,Maniema,SWIUdbyuNVh,dhis2,Maniema,uyuwe6bqphf,151672
+CD-MA-17,Saramabila,CD-MA,Maniema,aPONdpnYXAn,dhis2,Maniema,uyuwe6bqphf,235301
+CD-MA-18,Tunda,CD-MA,Maniema,BmjuXfI9o9i,dhis2,Maniema,uyuwe6bqphf,88885
+CD-MN-01,Banjow Moke,CD-MN,Mai Ndombe,Vf0Hzcf5ux3,dhis2,Mai-Ndombe,u0vP3ZicczY,115463
+CD-MN-02,Bokoro,CD-MN,Mai Ndombe,GcP2B8nmUVo,dhis2,Mai-Ndombe,u0vP3ZicczY,193760
+CD-MN-03,Bolobo,CD-MN,Mai Ndombe,MiaMAqYujLY,dhis2,Mai-Ndombe,u0vP3ZicczY,117256
+CD-MN-04,Bosobe,CD-MN,Mai Ndombe,DlpIIdkVKyg,dhis2,Mai-Ndombe,u0vP3ZicczY,101644
+CD-MN-05,Inongo,CD-MN,Mai Ndombe,PIT5UiywHIa,dhis2,Mai-Ndombe,u0vP3ZicczY,170113
+CD-MN-06,Kiri,CD-MN,Mai Ndombe,dQ9r634pZZF,dhis2,Mai-Ndombe,u0vP3ZicczY,96600
+CD-MN-07,Kwamouth,CD-MN,Mai Ndombe,nTMZjDaAgBb,dhis2,Mai-Ndombe,u0vP3ZicczY,200695
+CD-MN-08,Mimia,CD-MN,Mai Ndombe,IIMpZbLeAvx,dhis2,Mai-Ndombe,u0vP3ZicczY,42717
+CD-MN-09,Mushie,CD-MN,Mai Ndombe,EDu64jGXwRe,dhis2,Mai-Ndombe,u0vP3ZicczY,126210
+CD-MN-10,Nioki,CD-MN,Mai Ndombe,j89PZlq83OT,dhis2,Mai-Ndombe,u0vP3ZicczY,142609
+CD-MN-11,Ntandembelo,CD-MN,Mai Ndombe,Kts0Ppbd4En,dhis2,Mai-Ndombe,u0vP3ZicczY,65136
+CD-MN-12,Oshwe,CD-MN,Mai Ndombe,ZOLJkw5FviP,dhis2,Mai-Ndombe,u0vP3ZicczY,137884
+CD-MN-13,Penjwa,CD-MN,Mai Ndombe,NyvJf4zd0Sj,dhis2,Mai-Ndombe,u0vP3ZicczY,69611
+CD-MN-14,Yumbi,CD-MN,Mai Ndombe,VOwZTRAt0Ak,dhis2,Mai-Ndombe,u0vP3ZicczY,117708
+CD-MO-01,Binga,CD-MO,Mongala,a0M4XJunan2,dhis2,Mongala,krWZMdwGDIf,362567
+CD-MO-02,Bongandanga,CD-MO,Mongala,DvgAtRmciu7,dhis2,Mongala,krWZMdwGDIf,163732
+CD-MO-03,Boso Manzi,CD-MO,Mongala,w70GpRgNj01,dhis2,Mongala,krWZMdwGDIf,182346
+CD-MO-04,Boso Mondanda,CD-MO,Mongala,rWbNwJffOMY,dhis2,Mongala,krWZMdwGDIf,194456
+CD-MO-05,Bosondjo,CD-MO,Mongala,jm3dqXXoblR,dhis2,Mongala,krWZMdwGDIf,256594
+CD-MO-06,Bumba,CD-MO,Mongala,KxsehuKFqW3,dhis2,Mongala,krWZMdwGDIf,320932
+CD-MO-07,Lisala,CD-MO,Mongala,Xol9qIrf1Gi,dhis2,Mongala,krWZMdwGDIf,444043
+CD-MO-08,Lolo,CD-MO,Mongala,Kc3iE3HU6mA,dhis2,Mongala,krWZMdwGDIf,194172
+CD-MO-09,Pimu,CD-MO,Mongala,YrNj0gTvp4l,dhis2,Mongala,krWZMdwGDIf,321306
+CD-MO-10,Yamaluka,CD-MO,Mongala,Yo6u0UIHrfc,dhis2,Mongala,krWZMdwGDIf,203779
+CD-MO-11,Yambuku,CD-MO,Mongala,J1sz6yfmelr,dhis2,Mongala,krWZMdwGDIf,425187
+CD-MO-12,Yamongili,CD-MO,Mongala,wqYpElLVfnN,dhis2,Mongala,krWZMdwGDIf,187880
+CD-NK-01,Alimbongo,CD-NK,Nord Kivu,GLky3WLKZTi,dhis2,Nord-Kivu,pIAYIpy4hiH,222845
+CD-NK-02,Bambo,CD-NK,Nord Kivu,reOlSi4YUvZ,dhis2,Nord-Kivu,pIAYIpy4hiH,114037
+CD-NK-03,Beni,CD-NK,Nord Kivu,msg2MyMGhKv,dhis2,Nord-Kivu,pIAYIpy4hiH,540761
+CD-NK-04,Biena,CD-NK,Nord Kivu,TtaXlLIpy8b,dhis2,Nord-Kivu,pIAYIpy4hiH,118578
+CD-NK-05,Binza,CD-NK,Nord Kivu,qa1TBnjJilP,dhis2,Nord-Kivu,pIAYIpy4hiH,122127
+CD-NK-06,Birambizo,CD-NK,Nord Kivu,CFKkX16A1rM,dhis2,Nord-Kivu,pIAYIpy4hiH,112035
+CD-NK-07,Butembo,CD-NK,Nord Kivu,foR0DRLqtdJ,dhis2,Nord-Kivu,pIAYIpy4hiH,321363
+CD-NK-08,Goma,CD-NK,Nord Kivu,t8tjGKVhkl3,dhis2,Nord-Kivu,pIAYIpy4hiH,312964
+CD-NK-09,Itebero,CD-NK,Nord Kivu,bzo7dCPSXS2,dhis2,Nord-Kivu,pIAYIpy4hiH,65524
+CD-NK-10,Kalunguta,CD-NK,Nord Kivu,XoJ3dLz68aj,dhis2,Nord-Kivu,pIAYIpy4hiH,149309
+CD-NK-11,Kamango,CD-NK,Nord Kivu,vFJcnSDGQS0,dhis2,Nord-Kivu,pIAYIpy4hiH,94694
+CD-NK-12,Karisimbi,CD-NK,Nord Kivu,RSaqeeEezZl,dhis2,Nord-Kivu,pIAYIpy4hiH,585636
+CD-NK-13,Katoyi,CD-NK,Nord Kivu,Hxf5Q4aK6Ad,name,Nord-Kivu,pIAYIpy4hiH,191714
+CD-NK-14,Katwa,CD-NK,Nord Kivu,woJBeEpIZdy,dhis2,Nord-Kivu,pIAYIpy4hiH,679461
+CD-NK-15,Kayna,CD-NK,Nord Kivu,ZLgC2OOesbS,dhis2,Nord-Kivu,pIAYIpy4hiH,391406
+CD-NK-16,Kibirizi,CD-NK,Nord Kivu,OKMskHnAdPh,dhis2,Nord-Kivu,pIAYIpy4hiH,199235
+CD-NK-17,Kibua,CD-NK,Nord Kivu,is2bUIOxBUG,dhis2,Nord-Kivu,pIAYIpy4hiH,44366
+CD-NK-18,Kirotshe,CD-NK,Nord Kivu,xS36Jly2x2T,dhis2,Nord-Kivu,pIAYIpy4hiH,487499
+CD-NK-19,Kyondo,CD-NK,Nord Kivu,amGiV9h9C2I,dhis2,Nord-Kivu,pIAYIpy4hiH,242032
+CD-NK-20,Lubero,CD-NK,Nord Kivu,oTtGHeQSotN,dhis2,Nord-Kivu,pIAYIpy4hiH,261904
+CD-NK-21,Mabalako,CD-NK,Nord Kivu,svtAZQ9nVl0,dhis2,Nord-Kivu,pIAYIpy4hiH,218934
+CD-NK-22,Manguredjipa,CD-NK,Nord Kivu,IyDb5geWMDN,dhis2,Nord-Kivu,pIAYIpy4hiH,108710
+CD-NK-23,Masereka,CD-NK,Nord Kivu,kQCMPbHKQ93,dhis2,Nord-Kivu,pIAYIpy4hiH,225886
+CD-NK-24,Masisi,CD-NK,Nord Kivu,D6IRek5MhIt,dhis2,Nord-Kivu,pIAYIpy4hiH,350559
+CD-NK-25,Musienene,CD-NK,Nord Kivu,VooLsNf0dDB,dhis2,Nord-Kivu,pIAYIpy4hiH,293549
+CD-NK-26,Mutwanga,CD-NK,Nord Kivu,TnjfqDbxtwP,dhis2,Nord-Kivu,pIAYIpy4hiH,298760
+CD-NK-27,Mweso,CD-NK,Nord Kivu,OZYtwRFkc5Z,dhis2,Nord-Kivu,pIAYIpy4hiH,322939
+CD-NK-28,Nyiragongo,CD-NK,Nord Kivu,WLVe6Xt7Xum,dhis2,Nord-Kivu,pIAYIpy4hiH,408401
+CD-NK-29,Oicha,CD-NK,Nord Kivu,zOOAshOz4Cz,dhis2,Nord-Kivu,pIAYIpy4hiH,285970
+CD-NK-30,Pinga,CD-NK,Nord Kivu,Qnxdx1xJkXt,dhis2,Nord-Kivu,pIAYIpy4hiH,104920
+CD-NK-31,Rutshuru,CD-NK,Nord Kivu,nXYw6kLqc0y,dhis2,Nord-Kivu,pIAYIpy4hiH,260154
+CD-NK-32,Rwanguba,CD-NK,Nord Kivu,iQA2NO6cMnJ,dhis2,Nord-Kivu,pIAYIpy4hiH,215400
+CD-NK-33,Vuhovi,CD-NK,Nord Kivu,EsZ68sGXB5Y,dhis2,Nord-Kivu,pIAYIpy4hiH,112513
+CD-NK-34,Walikale,CD-NK,Nord Kivu,xIs8yXFjb9Y,dhis2,Nord-Kivu,pIAYIpy4hiH,160117
+CD-NU-01,Abuzi,CD-NU,Nord Ubangi,a4pMwNr59bj,dhis2,Nord-Ubangi,iu4Zj3Zq39m,109900
+CD-NU-02,Bili,CD-NU,Nord Ubangi,aU2jY9HAg9u,dhis2,Nord-Ubangi,iu4Zj3Zq39m,173790
+CD-NU-03,Bosobolo,CD-NU,Nord Ubangi,HT0MyE7KoXx,dhis2,Nord-Ubangi,iu4Zj3Zq39m,193705
+CD-NU-04,Businga,CD-NU,Nord Ubangi,R9J0n0C1U0s,dhis2,Nord-Ubangi,iu4Zj3Zq39m,196164
+CD-NU-05,Gbadolite,CD-NU,Nord Ubangi,lIWxyiAegfN,dhis2,Nord-Ubangi,iu4Zj3Zq39m,166334
+CD-NU-06,Karawa,CD-NU,Nord Ubangi,N3EOJsjCXzW,dhis2,Nord-Ubangi,iu4Zj3Zq39m,307909
+CD-NU-07,Loko,CD-NU,Nord Ubangi,ARnHjae4l5S,dhis2,Nord-Ubangi,iu4Zj3Zq39m,146799
+CD-NU-08,Mobayi Mbongo,CD-NU,Nord Ubangi,e3onjTOWxjS,dhis2,Nord-Ubangi,iu4Zj3Zq39m,147404
+CD-NU-09,Wapinda,CD-NU,Nord Ubangi,CSvyaLZJiEt,dhis2,Nord-Ubangi,iu4Zj3Zq39m,123170
+CD-NU-10,Wasolo,CD-NU,Nord Ubangi,PzrqwW6m5Wz,dhis2,Nord-Ubangi,iu4Zj3Zq39m,117946
+CD-NU-11,Yakoma,CD-NU,Nord Ubangi,Bou7OgEKEp1,dhis2,Nord-Ubangi,iu4Zj3Zq39m,171300
+CD-SA-01,Bena Dibele,CD-SA,Sankuru,Qx49Xk4whc5,dhis2,Sankuru,ybgmW3kIGuq,164167
+CD-SA-02,Dikungu,CD-SA,Sankuru,TJpOhLF2cXo,dhis2,Sankuru,ybgmW3kIGuq,153576
+CD-SA-03,Djalo Djeka,CD-SA,Sankuru,lDx3qiOSC3F,dhis2,Sankuru,ybgmW3kIGuq,117894
+CD-SA-04,Katako Kombe,CD-SA,Sankuru,IPDJ2AFLJ1q,dhis2,Sankuru,ybgmW3kIGuq,173009
+CD-SA-05,Kole,CD-SA,Sankuru,aUOLee25Tko,dhis2,Sankuru,ybgmW3kIGuq,182029
+CD-SA-06,Lodja,CD-SA,Sankuru,fJD7wOwwi4M,dhis2,Sankuru,ybgmW3kIGuq,416215
+CD-SA-07,Lomela,CD-SA,Sankuru,L08zgLln431,dhis2,Sankuru,ybgmW3kIGuq,152250
+CD-SA-08,Lusambo,CD-SA,Sankuru,x6qA2FLnw1e,dhis2,Sankuru,ybgmW3kIGuq,144930
+CD-SA-09,Minga,CD-SA,Sankuru,S6nnhxGaPR3,dhis2,Sankuru,ybgmW3kIGuq,154828
+CD-SA-10,Omendjadi,CD-SA,Sankuru,Bf1FDCIjIoE,dhis2,Sankuru,ybgmW3kIGuq,229312
+CD-SA-11,Ototo,CD-SA,Sankuru,Rw3GsgKRHj5,dhis2,Sankuru,ybgmW3kIGuq,197798
+CD-SA-12,Pania Mutombo,CD-SA,Sankuru,yzgZ77cqLEc,dhis2,Sankuru,ybgmW3kIGuq,69360
+CD-SA-13,Tshudi Loto,CD-SA,Sankuru,hdi8WfQrxeD,dhis2,Sankuru,ybgmW3kIGuq,89000
+CD-SA-14,Tshumbe,CD-SA,Sankuru,fjTwDPXTHPR,dhis2,Sankuru,ybgmW3kIGuq,107946
+CD-SA-15,Vanga Kete,CD-SA,Sankuru,UXxD0fWI2yS,dhis2,Sankuru,ybgmW3kIGuq,169393
+CD-SA-16,Wembo Nyama,CD-SA,Sankuru,dw6cxRCsTBH,dhis2,Sankuru,ybgmW3kIGuq,105767
+CD-SK-01,Bagira,CD-SK,Sud Kivu,aOghManYK5E,dhis2,Sud-Kivu,GnLX8MNgxZw,174354
+CD-SK-02,Bunyakiri,CD-SK,Sud Kivu,Th9eFA4VSq6,dhis2,Sud-Kivu,GnLX8MNgxZw,185638
+CD-SK-03,Fizi,CD-SK,Sud Kivu,roraCGWMUQ0,dhis2,Sud-Kivu,GnLX8MNgxZw,421379
+CD-SK-04,Hauts Plateaux,CD-SK,Sud Kivu,CP7PqKqIADY,dhis2,Sud-Kivu,GnLX8MNgxZw,45217
+CD-SK-05,Ibanda,CD-SK,Sud Kivu,jOxDAa0HM4a,dhis2,Sud-Kivu,GnLX8MNgxZw,352926
+CD-SK-06,Idjwi,CD-SK,Sud Kivu,Bxi65HPz420,dhis2,Sud-Kivu,GnLX8MNgxZw,276015
+CD-SK-07,Itombwe,CD-SK,Sud Kivu,ZwpyTsxIyb3,dhis2,Sud-Kivu,GnLX8MNgxZw,40245
+CD-SK-08,Kabare,CD-SK,Sud Kivu,zqUe1DuDMxH,dhis2,Sud-Kivu,GnLX8MNgxZw,204316
+CD-SK-09,Kadutu,CD-SK,Sud Kivu,bfFprcRp0YO,dhis2,Sud-Kivu,GnLX8MNgxZw,300361
+CD-SK-10,Kalehe,CD-SK,Sud Kivu,OWrtstWKEly,dhis2,Sud-Kivu,GnLX8MNgxZw,144596
+CD-SK-11,Kalole,CD-SK,Sud Kivu,euP5fSU9vky,dhis2,Sud-Kivu,GnLX8MNgxZw,122931
+CD-SK-12,Kalonge,CD-SK,Sud Kivu,iPD8STDLALc,dhis2,Sud-Kivu,GnLX8MNgxZw,126806
+CD-SK-13,Kamituga,CD-SK,Sud Kivu,rv3KA7DrJCO,dhis2,Sud-Kivu,GnLX8MNgxZw,205692
+CD-SK-14,Kaniola,CD-SK,Sud Kivu,lXfXl6ZJQWI,dhis2,Sud-Kivu,GnLX8MNgxZw,150780
+CD-SK-15,Katana,CD-SK,Sud Kivu,TpB2SUwsDbn,dhis2,Sud-Kivu,GnLX8MNgxZw,186435
+CD-SK-16,Kaziba,CD-SK,Sud Kivu,a2dADiJAGrT,dhis2,Sud-Kivu,GnLX8MNgxZw,86978
+CD-SK-17,Kimbi Lulenge,CD-SK,Sud Kivu,lF2aCHDydzn,dhis2,Sud-Kivu,GnLX8MNgxZw,211321
+CD-SK-18,Kitutu,CD-SK,Sud Kivu,n1r14Rh3NvB,dhis2,Sud-Kivu,GnLX8MNgxZw,175392
+CD-SK-19,Lemera,CD-SK,Sud Kivu,XFUHGajCqjY,dhis2,Sud-Kivu,GnLX8MNgxZw,165670
+CD-SK-20,Lulingu,CD-SK,Sud Kivu,UkT2MUS83YY,dhis2,Sud-Kivu,GnLX8MNgxZw,96641
+CD-SK-21,Minembwe,CD-SK,Sud Kivu,i3NxrFDG9hU,dhis2,Sud-Kivu,GnLX8MNgxZw,60551
+CD-SK-22,Minova,CD-SK,Sud Kivu,oNybyvjU5ZT,dhis2,Sud-Kivu,GnLX8MNgxZw,254475
+CD-SK-23,Miti Murhesa,CD-SK,Sud Kivu,cXkCT53xxfk,dhis2,Sud-Kivu,GnLX8MNgxZw,279199
+CD-SK-24,Mubumbano,CD-SK,Sud Kivu,JzBIOZSJfmJ,dhis2,Sud-Kivu,GnLX8MNgxZw,197665
+CD-SK-25,Mulungu,CD-SK,Sud Kivu,tJmFpEp4TCb,dhis2,Sud-Kivu,GnLX8MNgxZw,64006
+CD-SK-26,Mwana,CD-SK,Sud Kivu,nfYQfVxJRyJ,dhis2,Sud-Kivu,GnLX8MNgxZw,114781
+CD-SK-27,Mwenga,CD-SK,Sud Kivu,Q3HTytyiRyL,dhis2,Sud-Kivu,GnLX8MNgxZw,77595
+CD-SK-28,Nundu,CD-SK,Sud Kivu,pWBu6qPNvdv,dhis2,Sud-Kivu,GnLX8MNgxZw,166892
+CD-SK-29,Nyangezi,CD-SK,Sud Kivu,sai4xbqW0CL,dhis2,Sud-Kivu,GnLX8MNgxZw,179271
+CD-SK-30,Nyantende,CD-SK,Sud Kivu,R1E0VjRQ4SN,dhis2,Sud-Kivu,GnLX8MNgxZw,172084
+CD-SK-31,Ruzizi,CD-SK,Sud Kivu,jkonpGckbPg,dhis2,Sud-Kivu,GnLX8MNgxZw,208815
+CD-SK-32,Shabunda,CD-SK,Sud Kivu,MOESL4KbKoV,dhis2,Sud-Kivu,GnLX8MNgxZw,98335
+CD-SK-33,Uvira,CD-SK,Sud Kivu,mx8PkwuIR5x,dhis2,Sud-Kivu,GnLX8MNgxZw,356814
+CD-SK-34,Walungu,CD-SK,Sud Kivu,x4xQfjclCTo,dhis2,Sud-Kivu,GnLX8MNgxZw,246701
+CD-SU-01,Bangabola,CD-SU,Sud Ubangi,aVeCzXx2CDZ,dhis2,Sud-Ubangi,JkIljbLc4Ny,104562
+CD-SU-02,Bogosenubia,CD-SU,Sud Ubangi,k31uAjnzhTj,dhis2,Sud-Ubangi,JkIljbLc4Ny,222426
+CD-SU-03,Bokonzi,CD-SU,Sud Ubangi,izt3XGlBrmK,dhis2,Sud-Ubangi,JkIljbLc4Ny,173151
+CD-SU-04,Bominenge,CD-SU,Sud Ubangi,kYp7VK3USwS,dhis2,Sud-Ubangi,JkIljbLc4Ny,107247
+CD-SU-05,Boto,CD-SU,Sud Ubangi,FzA1yCf8PY7,dhis2,Sud-Ubangi,JkIljbLc4Ny,191872
+CD-SU-06,Budjala,CD-SU,Sud Ubangi,J1nws7yZLvv,dhis2,Sud-Ubangi,JkIljbLc4Ny,139486
+CD-SU-07,Bulu,CD-SU,Sud Ubangi,uCYafBxBtO8,dhis2,Sud-Ubangi,JkIljbLc4Ny,89785
+CD-SU-08,Bwamanda,CD-SU,Sud Ubangi,hlvN8zeyDZz,dhis2,Sud-Ubangi,JkIljbLc4Ny,239990
+CD-SU-09,Gemena,CD-SU,Sud Ubangi,F2sZHvPlln6,dhis2,Sud-Ubangi,JkIljbLc4Ny,439351
+CD-SU-10,Kungu,CD-SU,Sud Ubangi,C6xrZPQNxHd,dhis2,Sud-Ubangi,JkIljbLc4Ny,159328
+CD-SU-11,Libenge,CD-SU,Sud Ubangi,ArdlF8PnpYL,dhis2,Sud-Ubangi,JkIljbLc4Ny,239744
+CD-SU-12,Mawuya,CD-SU,Sud Ubangi,HL8XdWF8Sne,dhis2,Sud-Ubangi,JkIljbLc4Ny,126644
+CD-SU-13,Mbaya,CD-SU,Sud Ubangi,BWravV88qKy,dhis2,Sud-Ubangi,JkIljbLc4Ny,39385
+CD-SU-14,Ndage,CD-SU,Sud Ubangi,GMlNzqj2WDG,dhis2,Sud-Ubangi,JkIljbLc4Ny,128907
+CD-SU-15,Tandala,CD-SU,Sud Ubangi,nX75O17I2sY,dhis2,Sud-Ubangi,JkIljbLc4Ny,197526
+CD-SU-16,Zongo,CD-SU,Sud Ubangi,QNFYEQrW7Dy,dhis2,Sud-Ubangi,JkIljbLc4Ny,172812
+CD-TA-01,Ankoro,CD-TA,Tanganyika,dihBljVQG6z,name,Tanganyika,hyvduSNKvfe,332970
+CD-TA-02,Kabalo,CD-TA,Tanganyika,QmaankDWQSm,name,Tanganyika,hyvduSNKvfe,398960
+CD-TA-03,Kalemie,CD-TA,Tanganyika,kH7KijWY3eF,name,Tanganyika,hyvduSNKvfe,455352
+CD-TA-04,Kansimba,CD-TA,Tanganyika,dj29qACRqOf,name,Tanganyika,hyvduSNKvfe,271162
+CD-TA-05,Kiyambi,CD-TA,Tanganyika,pCawLGK8jaD,name,Tanganyika,hyvduSNKvfe,242336
+CD-TA-06,Kongolo,CD-TA,Tanganyika,rDRhOPd3q1u,name,Tanganyika,hyvduSNKvfe,455612
+CD-TA-07,Manono,CD-TA,Tanganyika,oU2G5jtXxFx,name,Tanganyika,hyvduSNKvfe,438235
+CD-TA-08,Mbulula,CD-TA,Tanganyika,W7IdWpJnPra,name,Tanganyika,hyvduSNKvfe,295302
+CD-TA-09,Moba,CD-TA,Tanganyika,adxBRCwSlWc,name,Tanganyika,hyvduSNKvfe,515119
+CD-TA-10,Nyemba,CD-TA,Tanganyika,SpDmHrCCVal,name,Tanganyika,hyvduSNKvfe,478742
+CD-TA-11,Nyunzu,CD-TA,Tanganyika,uz41FkMd6Gb,name,Tanganyika,hyvduSNKvfe,414416
+CD-TO-01,Bafwagbogbo,CD-TO,Tshopo,jaNYqjAceGA,dhis2,Tshopo,mnOXJ2Oa5U7,71603
+CD-TO-02,Bafwasende,CD-TO,Tshopo,pLBZiohnxFC,dhis2,Tshopo,mnOXJ2Oa5U7,108561
+CD-TO-03,Banalia,CD-TO,Tshopo,WxBLTUjeyfB,dhis2,Tshopo,mnOXJ2Oa5U7,173673
+CD-TO-04,Basali,CD-TO,Tshopo,yS5rrhCjubi,dhis2,Tshopo,mnOXJ2Oa5U7,53987
+CD-TO-05,Basoko,CD-TO,Tshopo,SxrrguFFktT,dhis2,Tshopo,mnOXJ2Oa5U7,203592
+CD-TO-06,Bengamisa,CD-TO,Tshopo,dxiEfVDsieA,dhis2,Tshopo,mnOXJ2Oa5U7,181768
+CD-TO-07,Isangi,CD-TO,Tshopo,dtBcztLoZpn,dhis2,Tshopo,mnOXJ2Oa5U7,182622
+CD-TO-08,Kabondo,CD-TO,Tshopo,Al5GBxzCgMe,dhis2,Tshopo,mnOXJ2Oa5U7,253941
+CD-TO-09,Lowa,CD-TO,Tshopo,cbLNDeAYrGo,dhis2,Tshopo,mnOXJ2Oa5U7,61108
+CD-TO-10,Lubunga,CD-TO,Tshopo,I9d1F9TGn33,dhis2,Tshopo,mnOXJ2Oa5U7,191099
+CD-TO-11,Makiso Kisangani,CD-TO,Tshopo,ZHIrX4z487c,dhis2,Tshopo,mnOXJ2Oa5U7,549228
+CD-TO-12,Mangobo,CD-TO,Tshopo,wOWB7WbNuSN,dhis2,Tshopo,mnOXJ2Oa5U7,183946
+CD-TO-13,Opala,CD-TO,Tshopo,G2crAXygKeF,dhis2,Tshopo,mnOXJ2Oa5U7,130289
+CD-TO-14,Opienge,CD-TO,Tshopo,G1OIhUfxLw5,dhis2,Tshopo,mnOXJ2Oa5U7,44198
+CD-TO-15,Tshopo,CD-TO,Tshopo,IMkgSD6FVjc,dhis2,Tshopo,mnOXJ2Oa5U7,173259
+CD-TO-16,Ubundu,CD-TO,Tshopo,ThkZT6koPKj,dhis2,Tshopo,mnOXJ2Oa5U7,128954
+CD-TO-17,Wanierukula,CD-TO,Tshopo,RowlA1nBHee,dhis2,Tshopo,mnOXJ2Oa5U7,130579
+CD-TO-18,Yabaondo,CD-TO,Tshopo,D4KWg03yZrX,dhis2,Tshopo,mnOXJ2Oa5U7,203999
+CD-TO-19,Yahisuli,CD-TO,Tshopo,HHv5opVWeoY,dhis2,Tshopo,mnOXJ2Oa5U7,98972
+CD-TO-20,Yahuma,CD-TO,Tshopo,quf7vedArhs,dhis2,Tshopo,mnOXJ2Oa5U7,188296
+CD-TO-21,Yakusu,CD-TO,Tshopo,IQjyCunMvUt,dhis2,Tshopo,mnOXJ2Oa5U7,136226
+CD-TO-22,Yaleko,CD-TO,Tshopo,S8Vd8dUvIqT,dhis2,Tshopo,mnOXJ2Oa5U7,176754
+CD-TO-23,Yalimbongo,CD-TO,Tshopo,CPZTm1VIXB9,dhis2,Tshopo,mnOXJ2Oa5U7,100211
+CD-TU-01,Befale,CD-TU,Tshuapa,gBHYNsh9EjA,dhis2,Tshuapa,ym2K6YcSNl9,109436
+CD-TU-02,Boende,CD-TU,Tshuapa,Uyz1XxXNBKB,dhis2,Tshuapa,ym2K6YcSNl9,290889
+CD-TU-03,Bokungu,CD-TU,Tshuapa,rhVkq8RX6BV,dhis2,Tshuapa,ym2K6YcSNl9,120225
+CD-TU-04,Bosanga,CD-TU,Tshuapa,PpY62UBIBEf,dhis2,Tshuapa,ym2K6YcSNl9,49412
+CD-TU-05,Djolu,CD-TU,Tshuapa,J7p1ASHGpX4,dhis2,Tshuapa,ym2K6YcSNl9,290310
+CD-TU-06,Ikela,CD-TU,Tshuapa,S3K6ShnHjIY,dhis2,Tshuapa,ym2K6YcSNl9,178172
+CD-TU-07,Lingomo,CD-TU,Tshuapa,hM2ZsK1vEox,dhis2,Tshuapa,ym2K6YcSNl9,153362
+CD-TU-08,Mompono,CD-TU,Tshuapa,Oiv2yYIjRrm,dhis2,Tshuapa,ym2K6YcSNl9,104037
+CD-TU-09,Mondombe,CD-TU,Tshuapa,sJNFC3s1djp,dhis2,Tshuapa,ym2K6YcSNl9,164823
+CD-TU-10,Monkoto,CD-TU,Tshuapa,VnNdiJcF3rF,dhis2,Tshuapa,ym2K6YcSNl9,144216
+CD-TU-11,Wema,CD-TU,Tshuapa,qa0zXM6tGPJ,dhis2,Tshuapa,ym2K6YcSNl9,117943
+CD-TU-12,Yalifafo,CD-TU,Tshuapa,pVmIEdIFeUJ,dhis2,Tshuapa,ym2K6YcSNl9,105309

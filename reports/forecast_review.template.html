@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forecast Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* One reading column: each section pairs a figure with what it shows and what it means. */
+:root {
+  --bg: #f7f8f7; --surface: #ffffff; --surface-2: #eef0ee;
+  --fg: #141816; --fg-2: #4d5550; --fg-3: #7a827d; --rule: #dde1de; --accent: #1c5cab;
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-body: "Public Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121514; --surface: #1a1d1c; --surface-2: #232826; --fg: #eef0ee; --fg-2: #b9c0bb;
+    --fg-3: #8a928d; --rule: #2e3431; --accent: #6da7ec; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121514; --surface: #1a1d1c; --surface-2: #232826; --fg: #eef0ee; --fg-2: #b9c0bb;
+  --fg-3: #8a928d; --rule: #2e3431; --accent: #6da7ec; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body);
+  font-size: 15px; line-height: 1.6; padding: 40px 16px 64px;
+}
+main { max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+.prose { max-width: 72ch; }
+h1, h2 { font-family: var(--font-display); font-weight: 600; line-height: 1.2; margin: 0; }
+h1 { font-size: 2.1rem; }
+h2 { font-size: 1.5rem; margin-bottom: 12px; }
+h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-3);
+     margin: 18px 0 6px; font-weight: 600; }
+p { margin: 0 0 10px; }
+ul { margin: 0 0 10px; padding-left: 20px; }
+li { margin-bottom: 6px; }
+.meta { color: var(--fg-2); font-size: 0.9rem; margin-top: 8px; }
+.num { font-family: var(--font-data); font-size: 0.92em; }
+header .lede { font-size: 1.05rem; color: var(--fg-2); margin-top: 14px; }
+.key { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 22px; }
+.key h2 { font-size: 1.2rem; }
+figure { margin: 0; }
+/* Figures are rendered on white; keep them on a white card in dark mode too. */
+figure img { width: 100%; height: auto; display: block; background: #fff; border-radius: 8px;
+             border: 1px solid var(--rule); }
+figcaption { color: var(--fg-3); font-size: 0.85rem; margin-top: 6px; }
+details { margin-top: 10px; }
+summary { cursor: pointer; color: var(--accent); font-weight: 500; }
+details figure { margin-top: 14px; }
+table { border-collapse: collapse; font-size: 0.9rem; margin: 6px 0 12px; }
+th, td { text-align: left; padding: 5px 14px 5px 0; border-bottom: 1px solid var(--rule); }
+td.n, th.n { text-align: right; font-family: var(--font-data); }
+nav { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.9rem; margin-top: 16px; }
+nav a { color: var(--accent); text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<main>
+
+<header class="prose">
+  <h1>Retrospective forecast review: damped SEIR vs the flatline baseline</h1>
+  <p class="meta">Model E0_damp050 &middot; 13 weekly forecast dates, 2026-05-09 to 2026-08-01 &middot; 1&ndash;4 week horizons &middot; scored against the 2026-11-01 release (weeks through 2026-08-29, at least 60 days old) &middot; country, 5 provinces, 117 health zones</p>
+  <p class="lede">How the model we plan to submit would have done had it run every week from mid-May to early August, scored by the weighted interval score (WIS) against the hub's flatline baseline. These are finalized-data backtests: every fit saw complete counts, so reporting delays play no part here.</p>
+  <nav>
+    <a href="#scores">1. Overall scores</a>
+    <a href="#horizon">2. By horizon</a>
+    <a href="#dates">3. By forecast date</a>
+    <a href="#provinces">4. Country and provinces</a>
+    <a href="#zones">5. Health zones</a>
+    <a href="#caveats">6. Before submitting</a>
+    <a href="#methods">Methods</a>
+  </nav>
+</header>
+
+<section class="key prose">
+  <h2>Key findings</h2>
+  <ul>
+    <li><strong>The model beats the flatline at every level.</strong> Relative WIS is <span class="num">0.71</span> for the country, <span class="num">0.78</span> for provinces and <span class="num">0.93</span> for zones (below 1 is better).</li>
+    <li><strong>Its intervals are better calibrated.</strong> 90% coverage is <span class="num">0.85</span>, <span class="num">0.89</span> and <span class="num">0.93</span> against the flatline's <span class="num">0.64</span>, <span class="num">0.61</span> and <span class="num">0.88</span>.</li>
+    <li><strong>All of the advantage comes from the growth phase.</strong> For forecast dates up to 06-13, relative WIS is <span class="num">0.58</span> (country) and <span class="num">0.62</span> (provinces). From 06-20 onward, during the plateau, the model and the flatline are tied (<span class="num">1.00</span> and <span class="num">0.99</span>).</li>
+    <li><strong>The gain grows with horizon at the country and province levels</strong>, from <span class="num">0.93</span> at 1 week to <span class="num">0.65&ndash;0.73</span> at 3&ndash;4 weeks. At the zone level it holds at about <span class="num">0.93</span> for every horizon.</li>
+    <li><strong>47 of the 59 zones with cases beat the flatline.</strong> The 12 that don't are only slightly worse (up to <span class="num">1.21</span>, apart from two zones with 1 and 5 cases), mostly Ituri zones with sharp turns.</li>
+    <li><strong>A known weakness:</strong> damping makes the 4-week forecasts lag sharp takeoffs (late May, Haut-Uele in July). The epidemic is now declining, a phase these backtests never covered.</li>
+  </ul>
+</section>
+
+<section id="scores" class="prose">
+  <h2>1. Overall scores</h2>
+  <p>Mean WIS over every forecast date, horizon and location at each level, with interval coverage. Relative WIS is the model's mean WIS divided by the flatline's.</p>
+  <table>
+    <thead><tr><th>Level</th><th class="n">Forecasts</th><th class="n">WIS, model</th><th class="n">WIS, flatline</th><th class="n">Relative WIS</th><th class="n">50% coverage<br>model / flatline</th><th class="n">90% coverage<br>model / flatline</th></tr></thead>
+    <tbody>
+      <tr><td>Country</td><td class="n">52</td><td class="n">46.1</td><td class="n">65.1</td><td class="n"><strong>0.71</strong></td><td class="n">0.46 / 0.31</td><td class="n">0.85 / 0.64</td></tr>
+      <tr><td>Province</td><td class="n">260</td><td class="n">12.4</td><td class="n">15.9</td><td class="n"><strong>0.78</strong></td><td class="n">0.59 / 0.46</td><td class="n">0.89 / 0.61</td></tr>
+      <tr><td>Zone</td><td class="n">6,084</td><td class="n">1.07</td><td class="n">1.15</td><td class="n"><strong>0.93</strong></td><td class="n">0.84 / 0.79</td><td class="n">0.93 / 0.88</td></tr>
+    </tbody>
+  </table>
+  <p><strong>What it means:</strong> the model improves on the flatline most where counts are large. Zone-level gains are smaller because most zones have few or no cases, where both models forecast near zero and score almost the same. The flatline's intervals are much too narrow for the country and provinces (90% coverage near 0.6). The model's are close to nominal at the 90% level, but its 50% intervals cover only 0.46 of country forecasts, so they are too narrow there.</p>
+</section>
+
+<section id="horizon">
+  <div class="prose">
+    <h2>2. By horizon</h2>
+    <p>Relative WIS for 1- to 4-week-ahead forecasts, over all forecast dates.</p>
+  </div>
+  <figure>{{img:output/final/review/E0_damp050/rel_wis_horizon.png}}<figcaption>Relative WIS by horizon and level. Below the grey line, the model beats the flatline.</figcaption></figure>
+  <div class="prose">
+    <p><strong>What it shows:</strong> 1 week ahead, the model is only slightly better than the flatline (<span class="num">0.92&ndash;0.93</span> at every level). For the country and provinces the advantage widens to <span class="num">0.62&ndash;0.73</span> at 3&ndash;4 weeks. Zone-level relative WIS stays near <span class="num">0.93</span>.</p>
+    <p><strong>What it means:</strong> the flatline gets steadily worse with horizon whenever cases are trending, while the damped model follows the trend for a while and then levels off. That matters most for aggregates, where trends are clearest.</p>
+  </div>
+</section>
+
+<section id="dates">
+  <div class="prose">
+    <h2>3. By forecast date</h2>
+    <p>Relative WIS for each forecast date, over all horizons.</p>
+  </div>
+  <figure>{{img:output/final/review/E0_damp050/rel_wis_origin.png}}<figcaption>Relative WIS by forecast date and level (all horizons).</figcaption></figure>
+  <div class="prose">
+    <table>
+      <thead><tr><th>Phase (forecast dates)</th><th class="n">Country</th><th class="n">Province</th><th class="n">Zone</th></tr></thead>
+      <tbody>
+        <tr><td>Growth (05-09 to 06-13)</td><td class="n">0.58</td><td class="n">0.62</td><td class="n">0.87</td></tr>
+        <tr><td>Plateau (06-20 to 08-01)</td><td class="n">1.00</td><td class="n">0.99</td><td class="n">0.98</td></tr>
+      </tbody>
+    </table>
+    <p><strong>What it shows:</strong> the model is far better than the flatline while the epidemic was growing quickly. During the plateau it ties the flatline overall: some dates are better, and others are worse (07-04, 07-11, 07-25 and 08-01 for the country).</p>
+    <p><strong>What it means:</strong> while counts are roughly flat, the flatline is hard to beat, and the model's extra structure adds noise as well as signal. The overall advantage depends on how much of the forecasting period has a clear trend. The current period (late October) is a slow decline that none of these forecast dates covered. Damping R toward 1 slows the forecast decline, so expect some overprediction there.</p>
+  </div>
+</section>
+
+<section id="provinces">
+  <div class="prose">
+    <h2>4. Country and provinces</h2>
+    <p>Each forecast date's 1&ndash;4 week forecast, drawn from that date's last observed count: median line, 50% and 90% intervals, darker for later dates. Points are the finalized counts. Each panel's title gives its relative WIS.</p>
+  </div>
+  <figure>{{img:output/final/review/E0_damp050/forecasts_country_province.png}}<figcaption>Retrospective 1&ndash;4 week forecasts for the country and the five modeled provinces (log(1 + count) scale).</figcaption></figure>
+  <div class="prose">
+    <table>
+      <thead><tr><th>Location</th><th class="n">Cases, Apr&ndash;Aug</th><th class="n">WIS, model</th><th class="n">WIS, flatline</th><th class="n">Relative WIS</th></tr></thead>
+      <tbody>
+        <tr><td>DRC (5 provinces)</td><td class="n">6,488</td><td class="n">46.1</td><td class="n">65.1</td><td class="n">0.71</td></tr>
+        <tr><td>Ituri</td><td class="n">5,142</td><td class="n">44.0</td><td class="n">53.8</td><td class="n">0.82</td></tr>
+        <tr><td>Nord-Kivu</td><td class="n">1,072</td><td class="n">11.6</td><td class="n">17.8</td><td class="n">0.65</td></tr>
+        <tr><td>Haut-Uele</td><td class="n">244</td><td class="n">5.38</td><td class="n">7.01</td><td class="n">0.77</td></tr>
+        <tr><td>Tshopo</td><td class="n">23</td><td class="n">0.64</td><td class="n">0.80</td><td class="n">0.81</td></tr>
+        <tr><td>Bas-Uele</td><td class="n">4</td><td class="n">0.19</td><td class="n">0.21</td><td class="n">0.89</td></tr>
+      </tbody>
+    </table>
+    <p><strong>What it shows:</strong></p>
+    <ul>
+      <li><strong>Early forecasts underpredict the takeoff.</strong> The first forecast (05-09) stayed near 25 cases a week while the country rose past 300. From 05-16 the forecasts follow the rise but level off, which was correct for the plateau that followed.</li>
+      <li><strong>Plateau forecasts track the counts</strong> in Ituri and the country.</li>
+      <li><strong>Nord-Kivu's steady climb</strong> is followed with a lag: each forecast flattens out below where the counts went next.</li>
+      <li><strong>Haut-Uele's July takeoff</strong> was missed by forecasts made before it and followed afterwards.</li>
+      <li><strong>Tshopo and Bas-Uele</strong> have so few cases that both models forecast near zero.</li>
+    </ul>
+    <p><strong>What it means:</strong> every province beats the flatline. The consistent weakness is underpredicting sustained growth. That's the cost of damping R toward 1, and it is the trade-off that avoids the large overshoots of the undamped model.</p>
+  </div>
+</section>
+
+<section id="zones">
+  <div class="prose">
+    <h2>5. Health zones</h2>
+    <p>Relative WIS for every zone with at least one case, against its total cases. Zones with no cases (58 of 117) aren't shown: there both models forecast zero, the flatline's WIS is 0, and relative WIS is undefined. The model scores near 0 there too (mean WIS under 0.1).</p>
+  </div>
+  <figure>{{img:output/final/review/E0_damp050/rel_wis_zones.png}}<figcaption>Relative WIS by zone (log scales), coloured by province; zones worse than 1.1, and those with over 500 cases, are labelled.</figcaption></figure>
+  <div class="prose">
+    <p><strong>What it shows:</strong> 47 of the 59 zones with cases beat the flatline (median relative WIS <span class="num">0.86</span>). The 12 that are worse are mostly slightly worse:</p>
+    <ul>
+      <li><strong>Ituri and other zones with sharp turns</strong> (Rwampara <span class="num">1.07</span>, Nyankunde <span class="num">1.14</span>, Fataki <span class="num">1.21</span>), where the counts reversed faster than the damped trend.</li>
+      <li><strong>Two sporadic zones:</strong> Kayna (1 case, <span class="num">1.50</span>) and Gethy (5 cases, <span class="num">1.38</span>), where any spread around zero scores worse than the flatline's exact zero.</li>
+    </ul>
+    <p><strong>What it means:</strong> the model's gains at the province level aren't driven by a few zones. Most zones improve modestly. Where it loses, the cause is quick reversals in individual zones that the model smooths over.</p>
+    <p>Each page below shows 20 zones, ordered by province and then by cases, in the same view as section 4.</p>
+    <details><summary>Zone forecasts, page 1: Ituri</summary><figure>{{img:output/final/review/E0_damp050/forecasts_zones_1.png}}</figure></details>
+    <details><summary>Zone forecasts, page 2</summary><figure>{{img:output/final/review/E0_damp050/forecasts_zones_2.png}}</figure></details>
+    <details><summary>Zone forecasts, page 3</summary><figure>{{img:output/final/review/E0_damp050/forecasts_zones_3.png}}</figure></details>
+    <details><summary>Zone forecasts, page 4</summary><figure>{{img:output/final/review/E0_damp050/forecasts_zones_4.png}}</figure></details>
+    <details><summary>Zone forecasts, page 5</summary><figure>{{img:output/final/review/E0_damp050/forecasts_zones_5.png}}</figure></details>
+    <details><summary>Zone forecasts, page 6</summary><figure>{{img:output/final/review/E0_damp050/forecasts_zones_6.png}}</figure></details>
+  </div>
+</section>
+
+<section id="caveats" class="prose">
+  <h2>6. Before submitting</h2>
+  <p>These scores come from finalized data in a growth and plateau phase. Three things separate them from a live submission:</p>
+  <ul>
+    <li><strong>The current phase is untested.</strong> Ituri has fallen from about 400 cases a week in August to about 200 in late October. Damping toward R = 1 slows the forecast decline, so the model will probably overpredict, and the flatline may be hard to beat. Forecast dates after 08-01 can't be scored under the 60-day rule yet.</li>
+    <li><strong>Reporting delays.</strong> Live fits see incomplete recent weeks; the 10-31 week shows only 150 cases so far. The reporting model's choice (v1 against v3&ndash;v5) is still open, and the damping value hasn't been tested on incomplete data, where it would probably need to be lower than 0.5.</li>
+    <li><strong>An end-to-end run.</strong> The damped model hasn't yet been run live with the reporting model. The live fit covers about 30 weeks, against at most 18 here, so fit time and sampler diagnostics need checking.</li>
+  </ul>
+</section>
+
+<section id="methods" class="prose">
+  <h2>Methods</h2>
+  <ul>
+    <li><strong>Model (E0_damp050):</strong> deterministic daily SEIR per health zone with gravity mixing. Province log R is a weekly random walk; each zone's deviation from its province is a B-spline. In forecast weeks, each zone's log R is multiplied by 0.5 per week, so R decays halfway toward 1 each week. Fitted in Stan with 4 chains; the forecast uses 400 posterior samples.</li>
+    <li><strong>Backtest:</strong> one fit per forecast date, using only weeks up to that date, from the finalized counts. 1&ndash;4 week forecasts for 117 zones; province and country forecasts are sums of zone samples.</li>
+    <li><strong>Truth:</strong> the 2026-11-01 release, using only weeks at least 60 days old (through 2026-08-29).</li>
+    <li><strong>Flatline baseline:</strong> the hubverse quantile baseline. Its median is the last observed count; its spread comes from the symmetrized week-to-week changes over the series, summed over the horizon and truncated at 0.</li>
+    <li><strong>Scoring:</strong> WIS on the hub's 23 quantile levels, averaged over forecast dates, horizons and locations. Relative WIS is the ratio of mean WIS (model / flatline) over the same forecasts. Coverage is the share of truths inside the central 50% and 90% intervals.</li>
+    <li><strong>Code:</strong> <code>scripts/backtest_final.R</code> (fits), <code>scripts/score_final.R</code> (scores), <code>scripts/plot_forecasts_final.R</code> (figures), <code>scripts/build_zone_report.py forecast_review</code> (this page).</li>
+  </ul>
+</section>
+
+</main>
+</body>
+</html>

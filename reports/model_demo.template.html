@@ -1,0 +1,504 @@
+<title>DRC SEIR Model Check</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column of numbered checks; each check pairs a short explanation with its evidence chart. */
+:root {
+  --bg: #f7f8f7;
+  --surface: #ffffff;
+  --surface-2: #eef0ee;
+  --fg: #141816;
+  --fg-2: #4d5550;
+  --fg-3: #7a827d;
+  --rule: #dde1de;
+  --grid: #e6e9e7;
+  --accent: #1c5cab;
+  --sim: #2a78d6;
+  --ref: #eb6834;
+  --ode: #141816;
+  --theory: #6250d6;
+  --good-ink: #0a6b0a; --good-bg: #e7f4e5;
+  --warn-ink: #7a5200; --warn-bg: #fdf3dc;
+  --bad-ink: #a02626; --bad-bg: #fbe6e6;
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-body: "Public Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121514; --surface: #1a1d1c; --surface-2: #232826; --fg: #eef0ee; --fg-2: #b9c0bb; --fg-3: #8a928d;
+    --rule: #2e3431; --grid: #262b29; --accent: #6da7ec;
+    --sim: #3987e5; --ref: #d95926; --ode: #eef0ee; --theory: #9085e9;
+    --good-ink: #6fd46f; --good-bg: #16301a; --warn-ink: #f5c55a; --warn-bg: #33290f; --bad-ink: #f08a8a; --bad-bg: #3a1a1a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121514; --surface: #1a1d1c; --surface-2: #232826; --fg: #eef0ee; --fg-2: #b9c0bb; --fg-3: #8a928d;
+  --rule: #2e3431; --grid: #262b29; --accent: #6da7ec;
+  --sim: #3987e5; --ref: #d95926; --ode: #eef0ee; --theory: #9085e9;
+  --good-ink: #6fd46f; --good-bg: #16301a; --warn-ink: #f5c55a; --warn-bg: #33290f; --bad-ink: #f08a8a; --bad-bg: #3a1a1a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+}
+main { max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 52px; }
+.prose { max-width: 70ch; }
+header { display: flex; flex-direction: column; gap: 12px; }
+.eyebrow { font-family: var(--font-data); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-3); }
+h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(30px, 4.4vw, 42px); line-height: 1.1; margin: 0; text-wrap: balance; }
+h2 { font-family: var(--font-display); font-weight: 600; font-size: 24px; line-height: 1.2; margin: 0; text-wrap: balance; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+h2 .num { font-family: var(--font-data); font-size: 14px; font-weight: 500; color: var(--fg-3); }
+h3 { font-size: 14px; font-weight: 600; margin: 0; }
+p { margin: 0; }
+.lede { font-size: 17px; color: var(--fg-2); }
+section { display: flex; flex-direction: column; gap: 16px; }
+.sub { color: var(--fg-2); }
+.mono { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+
+/* Example setup */
+.setup { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px 28px; }
+.setup div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.setup dt { font-size: 11.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--fg-3); }
+.setup dd { margin: 0; font-family: var(--font-data); font-size: 13.5px; font-variant-numeric: tabular-nums; }
+.setup dd small { display: block; font-family: var(--font-body); font-size: 12.5px; color: var(--fg-2); }
+
+/* Verdicts */
+.verdicts { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.verdict { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 10px; align-items: start; padding: 14px 16px; border-bottom: 1px solid var(--rule); text-decoration: none; color: inherit; }
+.verdict:hover { background: var(--surface-2); }
+.verdict:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.verdict .n { font-family: var(--font-data); font-size: 13px; color: var(--fg-3); padding-top: 1px; }
+.verdict .t { font-weight: 600; font-size: 14px; }
+.verdict .d { font-size: 13px; color: var(--fg-2); font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+.pill { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; padding: 2px 9px 2px 7px; border-radius: 999px; white-space: nowrap; }
+.pill svg { width: 12px; height: 12px; }
+.pill.pass { color: var(--good-ink); background: var(--good-bg); }
+.pill.warn { color: var(--warn-ink); background: var(--warn-bg); }
+.pill.fail { color: var(--bad-ink); background: var(--bad-bg); }
+
+/* Check sections */
+.how { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px 28px; font-size: 14px; color: var(--fg-2); }
+.how div { display: flex; flex-direction: column; gap: 4px; }
+.how b { font-size: 11.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--fg-3); }
+@media (max-width: 720px) { .how { grid-template-columns: minmax(0, 1fr); } }
+.stats { display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 13px; color: var(--fg-2); }
+.stats span b { font-family: var(--font-data); font-weight: 500; color: var(--fg); font-variant-numeric: tabular-nums; }
+.stack { display: flex; flex-direction: column; gap: 14px; }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 24px; }
+@media (max-width: 720px) { .grid2 { grid-template-columns: minmax(0, 1fr); } }
+.chartcol { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 14px 10px; display: flex; flex-direction: column; gap: 6px; min-width: 0; position: relative; }
+.panel .cap { font-size: 12.5px; color: var(--fg-3); }
+.panel svg { display: block; width: 100%; height: auto; overflow: visible; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--fg-2); }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.legend svg { width: 22px; height: 10px; flex: none; }
+svg text { font-family: var(--font-data); font-size: 10.5px; fill: var(--fg-3); }
+svg .axis-line { stroke: var(--rule); }
+svg .gridline { stroke: var(--grid); }
+svg .xhair { stroke: var(--fg-3); stroke-dasharray: 3 3; }
+svg .axis-title { font-family: var(--font-body); font-size: 11px; fill: var(--fg-3); }
+.tip { position: absolute; pointer-events: none; z-index: 5; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 8px 10px; font-size: 12.5px; box-shadow: 0 4px 16px rgb(0 0 0 / .12); min-width: 160px; }
+.tip .t { font-weight: 600; margin-bottom: 4px; color: var(--fg); }
+.tip .r { display: flex; justify-content: space-between; gap: 14px; color: var(--fg-2); }
+.tip .r b { font-family: var(--font-data); font-weight: 500; color: var(--fg); font-variant-numeric: tabular-nums; }
+.tablewrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: right; padding: 9px 14px; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { font-size: 11.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--fg-3); background: var(--surface-2); }
+td { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+td:first-child { font-family: var(--font-body); font-weight: 500; }
+tr:last-child td { border-bottom: 0; }
+.facts { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; }
+.fact { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--rule); font-size: 14px; }
+.fact:last-child { border-bottom: 0; }
+.fact .v { font-family: var(--font-data); font-size: 13px; color: var(--fg-2); }
+.notes { display: flex; flex-direction: column; gap: 10px; color: var(--fg-2); font-size: 14px; max-width: 74ch; }
+.notes ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+footer { font-size: 12.5px; color: var(--fg-3); border-top: 1px solid var(--rule); padding-top: 16px; }
+</style>
+
+<main>
+  <header>
+    <div class="eyebrow">fcast-hack · epymorph 2.0.0b1 · implementation check</div>
+    <h1>DRC SEIR Model Check</h1>
+    <p class="lede prose">One example outbreak on the Ituri and Nord-Kivu health zones, checked six ways. Every check compares epymorph's output with something computed separately, from the model's equations or from SEIR theory, without using epymorph's code.</p>
+  </header>
+
+  <section>
+    <h2>The example</h2>
+    <dl class="setup" id="setup"></dl>
+  </section>
+
+  <section>
+    <h2>Results</h2>
+    <div class="verdicts" id="verdicts"></div>
+  </section>
+
+  <section id="check-1">
+    <h2><span class="num">Check 1</span>Transitions happen at the rates in the equations</h2>
+    <div class="how">
+      <div><b>What should happen</b><p>On every time step, in every zone, epymorph draws each transition from a Poisson distribution whose mean is the SEIR rate times the step length. Infection uses everyone present in the zone at that moment, visitors included: β·S·I/N.</p></div>
+      <div><b>How we checked</b><p>From one run's tick-by-tick output we rebuilt the state just before each step, computed the expected count for each transition ourselves, and compared it with what epymorph drew. If the draws are right, the standardized differences (observed − expected)/√expected follow a standard normal curve.</p></div>
+    </div>
+    <div class="stack" id="trans"></div>
+  </section>
+
+  <section id="check-2">
+    <h2><span class="num">Check 2</span>Travel follows the distance kernel</h2>
+    <div class="how">
+      <div><b>What should happen</b><p>Each day, 5% of each zone's residents (rounded down) pick a destination with probability proportional to exp(−distance / φ), counting their own zone. They spend the first third of the day there and are all home for the rest.</p></div>
+      <div><b>How we checked</b><p>We computed great-circle distances and the expected number of visitors arriving at and leaving each zone with our own code, then compared that with the people present in each zone on the first step of every day. On the second step, everyone should be back home.</p></div>
+    </div>
+    <p class="sub prose" id="move-finding"></p>
+    <div class="stats" id="move-stats"></div>
+    <div class="panel" id="move"></div>
+  </section>
+
+  <section id="check-3">
+    <h2><span class="num">Check 3</span>The average run matches our own implementation</h2>
+    <div class="how">
+      <div><b>What should happen</b><p>Averaged over many runs, a stochastic model should track the deterministic version of the same equations. Small gaps are expected from chance in the earliest days and from rounding travelers down to whole people.</p></div>
+      <div><b>How we checked</b><p>We wrote the model again from scratch in plain numpy: once advancing in the same two steps per day, and once as a continuous-time ODE solved with fine RK4 steps. Both start from the same 300 infectious people.</p></div>
+    </div>
+    <div class="legend" id="ref-legend"></div>
+    <div class="panel" id="ref"></div>
+    <div class="tablewrap"><table id="ref-table"></table></div>
+  </section>
+
+  <section id="check-4">
+    <h2><span class="num">Check 4</span>Early growth matches SEIR theory</h2>
+    <div class="how">
+      <div><b>What should happen</b><p>Before many people are immune, cases grow exponentially at the rate r that solves (1 + r/σ)(1 + r/γ) = R0. Movement doesn't change r here, because every zone has the same R0.</p></div>
+      <div><b>How we checked</b><p>We fitted a straight line to log daily cases over the window shown, for the average of the runs and for each run separately, and compared the slopes with theory.</p></div>
+    </div>
+    <div class="grid2">
+      <div class="panel" id="growth-curve"></div>
+      <div class="panel" id="growth-runs"></div>
+    </div>
+    <p class="sub prose" id="growth-finding"></p>
+    <div class="tablewrap"><table id="growth-table"></table></div>
+  </section>
+
+  <section id="check-5">
+    <h2><span class="num">Check 5</span>The final size matches theory</h2>
+    <div class="how">
+      <div><b>What should happen</b><p>With no immunity at the start and no interventions, an SEIR epidemic with R0 = 2 ends with the share z ever infected, where z = 1 − e<sup>−2z</sup>. That gives the same answer in every zone, whatever its size.</p></div>
+      <div><b>How we checked</b><p>We ran long enough for the epidemic to burn out, then compared each zone's share ever infected (median and 90% range across runs) with the theoretical value.</p></div>
+    </div>
+    <div class="stats" id="fs-stats"></div>
+    <div class="panel" id="fs"></div>
+  </section>
+
+  <section id="check-6">
+    <h2><span class="num">Check 6</span>No one is created or lost</h2>
+    <div class="how">
+      <div><b>What should happen</b><p>Movement and disease only move people between places and compartments. Every zone's residents should add up to its GRID3 population at every step, and no compartment should go negative.</p></div>
+      <div><b>How we checked</b><p>We summed the compartments for every zone at every step of every run.</p></div>
+    </div>
+    <div class="facts" id="cons"></div>
+  </section>
+
+  <section>
+    <h2>What this does and doesn't show</h2>
+    <div class="notes" id="notes"></div>
+  </section>
+
+  <footer id="footer"></footer>
+</main>
+
+<script id="data" type="application/json">/*__DATA__*/</script>
+<script>
+(function () {
+  const D = JSON.parse(document.getElementById("data").textContent);
+  const U = D.setup, DAYS = U.days, NZ = D.zones.length;
+  const start = new Date(U.start + "T00:00:00Z");
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+  const fmtInt = (v) => Math.round(v).toLocaleString("en-US");
+  const fmtCompact = (v) => { const a = Math.abs(v); return a >= 1e6 ? (v / 1e6).toFixed(a >= 1e7 ? 0 : 1) + "M" : a >= 1e3 ? (v / 1e3).toFixed(a >= 1e4 ? 0 : 1) + "k" : String(Math.round(v)); };
+  const pct = (v, d = 1) => (v * 100).toFixed(d) + "%";
+  const dayDate = (d) => { const x = new Date(start); x.setUTCDate(x.getUTCDate() + d); return x; };
+  const fmtDate = (d) => dayDate(d).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+  const niceStep = (raw) => { const p = 10 ** Math.floor(Math.log10(raw)); const n = raw / p; return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * p; };
+  const linTicks = (lo, hi, n = 4) => { const s = niceStep((hi - lo) / n); const out = []; for (let v = Math.ceil(lo / s) * s; v <= hi + 1e-9; v += s) out.push(+v.toFixed(10)); return out; };
+  const icon = {
+    pass: '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    warn: '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2.5v4.2M6 9.2v.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+    fail: '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+  };
+  const pill = (s) => `<span class="pill ${s}">${icon[s]}${{ pass: "Pass", warn: "Check", fail: "Fail" }[s]}</span>`;
+  const lineKey = (color, dash = "", w = 2, band = false) => band
+    ? `<svg viewBox="0 0 22 10" aria-hidden="true"><rect x="0" y="1" width="22" height="8" rx="2" fill="${color}" fill-opacity=".18"/></svg>`
+    : `<svg viewBox="0 0 22 10" aria-hidden="true"><line x1="1" y1="5" x2="21" y2="5" stroke="${color}" stroke-width="${w}" stroke-dasharray="${dash}" stroke-linecap="round"/></svg>`;
+
+  function tipAt(container, html, ev) {
+    let tip = container.querySelector(".tip");
+    if (!tip) { tip = document.createElement("div"); tip.className = "tip"; container.appendChild(tip); }
+    tip.innerHTML = html; tip.hidden = false;
+    const r = container.getBoundingClientRect();
+    const px = ev.clientX - r.left, py = ev.clientY - r.top;
+    let left = px + 14; if (left + tip.offsetWidth > container.clientWidth - 4) left = px - tip.offsetWidth - 14;
+    tip.style.left = Math.max(4, left) + "px"; tip.style.top = Math.max(4, py - 10) + "px";
+  }
+  const hideTip = (c) => { const t = c.querySelector(".tip"); if (t) t.hidden = true; };
+
+  // Generic SVG frame: returns scales + drawing group.
+  function frame(container, { W, H, m, x, y, xTicks, yTicks, xFmt = String, yFmt = String, xTitle, yTitle, ylog = false, label }) {
+    const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": label }, container);
+    const iw = W - m.l - m.r, ih = H - m.t - m.b;
+    const sx = (v) => m.l + ((v - x[0]) / (x[1] - x[0])) * iw;
+    const sy = ylog
+      ? (v) => m.t + ih - ((Math.log10(Math.max(v, y[0])) - Math.log10(y[0])) / (Math.log10(y[1]) - Math.log10(y[0]))) * ih
+      : (v) => m.t + ih - ((v - y[0]) / (y[1] - y[0])) * ih;
+    yTicks.forEach((t) => { el("line", { x1: m.l, x2: m.l + iw, y1: sy(t), y2: sy(t), class: "gridline" }, svg); el("text", { x: m.l - 6, y: sy(t) + 3.5, "text-anchor": "end" }, svg).textContent = yFmt(t); });
+    xTicks.forEach((t) => { el("text", { x: sx(t), y: m.t + ih + 15, "text-anchor": "middle" }, svg).textContent = xFmt(t); });
+    el("line", { x1: m.l, x2: m.l + iw, y1: m.t + ih, y2: m.t + ih, class: "axis-line" }, svg);
+    if (xTitle) el("text", { x: m.l + iw / 2, y: H - 2, "text-anchor": "middle", class: "axis-title" }, svg).textContent = xTitle;
+    if (yTitle) el("text", { x: 12, y: m.t + ih / 2, "text-anchor": "middle", class: "axis-title", transform: `rotate(-90 12 ${m.t + ih / 2})` }, svg).textContent = yTitle;
+    return { svg, sx, sy, iw, ih, m, W, H };
+  }
+  const pathOf = (arr, sx, sy, x0 = 0) => arr.map((v, k) => `${k ? "L" : "M"}${sx(x0 + k).toFixed(1)},${sy(v).toFixed(1)}`).join("");
+  const bandOf = (lo, hi, sx, sy) => pathOf(hi, sx, sy) + lo.slice().reverse().map((v, k) => `L${sx(lo.length - 1 - k).toFixed(1)},${sy(v).toFixed(1)}`).join("") + "Z";
+  const monthTicks = (days) => { const out = []; for (let m = 0; m < 30; m += 2) { const d0 = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth() + m, 1)); const dd = Math.round((d0 - start) / 864e5); if (dd >= 0 && dd < days) out.push(dd); } return out; };
+  const monthFmt = (d) => dayDate(d).toLocaleDateString("en-GB", { month: "short", year: "2-digit", timeZone: "UTC" });
+
+  // ---------- Setup ----------
+  const seedNames = U.seed_zones.join(", ");
+  document.getElementById("setup").innerHTML = [
+    ["Health zones", `${U.n_zones}`, `${U.provinces.join(" and ")} · ${fmtInt(U.population)} people (GRID3)`],
+    ["Start", `${U.seed_per_zone * U.seed_zones.length} infectious`, `${U.seed_per_zone} each in ${seedNames} on ${fmtDate(0)}`],
+    ["Transmission", `β = ${U.beta} · R0 = ${U.r0.toFixed(1)}`, "R0 = β / γ"],
+    ["Incubation, infectious period", `${(1 / U.sigma).toFixed(0)} days, ${(1 / U.gamma).toFixed(0)} days`, `σ = 1/${(1 / U.sigma).toFixed(0)}, γ = 1/${(1 / U.gamma).toFixed(0)}`],
+    ["Travel", `${pct(U.commuter_proportion, 0)} daily · φ = ${U.phi_miles} mi`, "epymorph Centroids model; distances in miles"],
+    ["Time steps", `${U.steps.map((s) => (s * 24).toFixed(0) + " h").join(" + ")}`, "away first, then home"],
+    ["Length and runs", `${DAYS} days × ${U.runs} runs`, "stochastic, random seeds 1000–" + (999 + U.runs)],
+  ].map(([k, v, s]) => `<div><dt>${k}</dt><dd>${v}<small>${s}</small></dd></div>`).join("");
+
+  // ---------- Verdicts ----------
+  const T = D.transitions.transitions, MV = D.movement, RF = D.reference, GR = D.growth, FS = D.final_size, CN = D.conservation;
+  const transOK = T.every((t) => Math.abs(t.ratio - 1) < 0.01 && Math.abs(t.z_mean) < 0.05 && Math.abs(t.z_sd - 1) < 0.05);
+  const moveOK = Math.abs(MV.z_mean) < 0.3 && MV.z_sd > 0.7 && MV.z_sd < 1.3 && MV.max_abs_z < 4 && MV.all_home_on_second_step;
+  const rs = RF.summary;
+  const peakGap = rs.runs_mean.day - rs.discrete.day;
+  const totalGap = rs.runs_mean.total / rs.discrete.total - 1;
+  const refOK = Math.abs(peakGap) <= 5 && Math.abs(totalGap) < 0.02;
+  const growthGap = GR.runs_mean / GR.theory - 1;
+  const growthOK = Math.abs(growthGap) < 0.05;
+  const fsGap = FS.overall_median - FS.theory;
+  const fsOK = Math.abs(fsGap) < 0.015 && FS.still_infected_at_end_median < 1000;
+  const consOK = CN.home_totals_match && CN.overall_total_matches && CN.no_negative_counts;
+  const V = [
+    [1, "Transitions match the equations", transOK, `observed/expected ${T.map((t) => t.ratio.toFixed(4)).join(" · ")}`],
+    [2, "Travel follows the distance kernel", moveOK, `${NZ} zones, mean z ${MV.z_mean >= 0 ? "+" : ""}${MV.z_mean.toFixed(2)}, SD ${MV.z_sd.toFixed(2)}`],
+    [3, "Average run matches our implementation", refOK, `peak ${peakGap >= 0 ? "+" : ""}${peakGap} days, total ${totalGap >= 0 ? "+" : ""}${pct(totalGap, 2)}`],
+    [4, "Early growth matches theory", growthOK, `r = ${GR.runs_mean.toFixed(4)} vs ${GR.theory.toFixed(4)} per day (${growthGap >= 0 ? "+" : ""}${pct(growthGap)})`],
+    [5, "Final size matches theory", fsOK, `${pct(FS.overall_median)} vs ${pct(FS.theory)} ever infected`],
+    [6, "No one created or lost", consOK, `${fmtInt(CN.ticks_checked)} steps checked`],
+  ];
+  document.getElementById("verdicts").innerHTML = V.map(([n, t, ok, d]) => `
+    <a class="verdict" href="#check-${n}"><span class="n">${n}</span><span><div class="t">${t}</div><div class="d">${d}</div></span>${pill(ok ? "pass" : "fail")}</a>`).join("");
+
+  // ---------- Check 1: transitions ----------
+  (function () {
+    const wrap = document.getElementById("trans");
+    const bins = D.transitions.z_bins, bw = bins[1] - bins[0];
+    T.forEach((t) => {
+      const p = document.createElement("div"); p.className = "panel"; wrap.appendChild(p);
+      p.insertAdjacentHTML("beforeend", `<h3>${t.name}</h3>`);
+      const row = document.createElement("div"); row.className = "grid2"; p.appendChild(row);
+      const left = document.createElement("div"); left.className = "chartcol"; row.appendChild(left);
+      const right = document.createElement("div"); right.className = "chartcol"; row.appendChild(right);
+      left.insertAdjacentHTML("beforeend", `<div class="cap">Daily totals: epymorph (line) vs expected (shaded)</div>`);
+      const yMax = Math.max(...t.daily_expected, ...t.daily_observed);
+      const top = frame(left, { W: 460, H: 190, m: { l: 44, r: 8, t: 6, b: 22 }, x: [0, DAYS - 1], y: [0, yMax * 1.05], xTicks: monthTicks(DAYS), yTicks: linTicks(0, yMax), xFmt: monthFmt, yFmt: fmtCompact, label: `Daily ${t.name} events, observed and expected` });
+      el("path", { d: pathOf(t.daily_expected, top.sx, top.sy) + `L${top.sx(DAYS - 1)},${top.sy(0)}L${top.sx(0)},${top.sy(0)}Z`, fill: "var(--ref)", "fill-opacity": 0.22, stroke: "none" }, top.svg);
+      el("path", { d: pathOf(t.daily_observed, top.sx, top.sy), fill: "none", stroke: "var(--sim)", "stroke-width": 1.4 }, top.svg);
+      const xh = el("line", { y1: top.m.t, y2: top.m.t + top.ih, class: "xhair", visibility: "hidden" }, top.svg);
+      const hit = el("rect", { x: top.m.l, y: top.m.t, width: top.iw, height: top.ih, fill: "transparent" }, top.svg);
+      hit.addEventListener("pointermove", (ev) => {
+        const r = top.svg.getBoundingClientRect(); const d = Math.max(0, Math.min(DAYS - 1, Math.round((((ev.clientX - r.left) / r.width) * top.W - top.m.l) / top.iw * (DAYS - 1))));
+        xh.setAttribute("x1", top.sx(d)); xh.setAttribute("x2", top.sx(d)); xh.setAttribute("visibility", "visible");
+        tipAt(p, `<div class="t">${fmtDate(d)} · day ${d}</div><div class="r"><span>epymorph</span><b>${fmtInt(t.daily_observed[d])}</b></div><div class="r"><span>Expected</span><b>${fmtInt(t.daily_expected[d])}</b></div>`, ev);
+      });
+      hit.addEventListener("pointerleave", () => { xh.setAttribute("visibility", "hidden"); hideTip(p); });
+
+      right.insertAdjacentHTML("beforeend", `<div class="cap">Standardized differences, every zone and step (bars) vs standard normal (line)</div>`);
+      const n = t.z_hist.reduce((a, b) => a + b, 0);
+      const dens = t.z_hist.map((c) => c / n / bw);
+      const normal = (z) => Math.exp(-z * z / 2) / Math.sqrt(2 * Math.PI);
+      const hMax = Math.max(...dens, normal(0)) * 1.08;
+      const hist = frame(right, { W: 460, H: 190, m: { l: 44, r: 8, t: 6, b: 22 }, x: [-4, 4], y: [0, hMax], xTicks: [-4, -3, -2, -1, 0, 1, 2, 3, 4], yTicks: linTicks(0, hMax, 3), yFmt: (v) => v.toFixed(1), label: `Histogram of standardized differences for ${t.name}` });
+      dens.forEach((v, k) => {
+        const x0 = hist.sx(bins[k]) + 0.5, x1 = hist.sx(bins[k + 1]) - 0.5;
+        const rect = el("rect", { x: x0, y: hist.sy(v), width: Math.max(0.5, x1 - x0), height: hist.sy(0) - hist.sy(v), fill: "var(--sim)", "fill-opacity": 0.55 }, hist.svg);
+        rect.addEventListener("pointermove", (ev) => tipAt(p, `<div class="t">z from ${bins[k].toFixed(2)} to ${bins[k + 1].toFixed(2)}</div><div class="r"><span>Cells</span><b>${fmtInt(t.z_hist[k])}</b></div><div class="r"><span>Share</span><b>${pct(t.z_hist[k] / n, 2)}</b></div><div class="r"><span>Normal</span><b>${pct((normal((bins[k] + bins[k + 1]) / 2) * bw), 2)}</b></div>`, ev));
+        rect.addEventListener("pointerleave", () => hideTip(p));
+      });
+      const zs = []; for (let z = -4; z <= 4.001; z += 0.05) zs.push(z);
+      el("path", { d: zs.map((z, k) => `${k ? "L" : "M"}${hist.sx(z).toFixed(1)},${hist.sy(normal(z)).toFixed(1)}`).join(""), fill: "none", stroke: "var(--theory)", "stroke-width": 2, "pointer-events": "none" }, hist.svg);
+      p.insertAdjacentHTML("beforeend", `<div class="stats">
+        <span>Observed/expected <b>${t.ratio.toFixed(4)}</b></span>
+        <span>Mean z <b>${t.z_mean >= 0 ? "+" : ""}${t.z_mean.toFixed(3)}</b> <span class="mono" style="color:var(--fg-3)">(0)</span></span>
+        <span>SD of z <b>${t.z_sd.toFixed(3)}</b> <span class="mono" style="color:var(--fg-3)">(1)</span></span>
+        <span>Cells <b>${fmtInt(t.n_cells)}</b></span></div>`);
+    });
+  })();
+
+  // ---------- Check 2: movement ----------
+  (function () {
+    document.getElementById("move-finding").innerHTML = `<b style="color:var(--fg)">One thing we learned.</b> epymorph picks destinations in two stages: it draws requested trips from the kernel, then re-assigns the actual travelers using those requested shares. That leaves the averages unchanged but roughly doubles the day-to-day variation in arrivals. Assuming a single draw, the z-scores had an SD of ${MV.z_sd_one_stage.toFixed(2)} instead of 1. With the two-stage variance worked out, it is ${MV.z_sd.toFixed(2)}, and each zone's observed day-to-day spread is ${MV.daily_sd_ratio_median.toFixed(3)}× the predicted spread (median across zones).`;
+    document.getElementById("move-stats").innerHTML = `
+      <span>Expected travelers per day <b>${fmtInt(MV.expected_travelers_per_day)}</b></span>
+      <span>Mean z <b>${MV.z_mean >= 0 ? "+" : ""}${MV.z_mean.toFixed(2)}</b> (0)</span>
+      <span>SD of z <b>${MV.z_sd.toFixed(2)}</b> (1)</span>
+      <span>Largest |z| <b>${MV.max_abs_z.toFixed(2)}</b></span>
+      <span>Daily spread vs predicted <b>${MV.daily_sd_ratio_median.toFixed(3)}×</b></span>
+      <span>Everyone home on step 2 <b>${MV.all_home_on_second_step ? "yes, every day" : "no"}</b></span>`;
+    const p = document.getElementById("move");
+    p.insertAdjacentHTML("beforeend", `<div class="cap">Net change in people present during the away step, per zone: expected from the kernel vs epymorph's average over ${DAYS} days. Points on the diagonal agree.</div>`);
+    const ex = MV.expected_net, ob = MV.observed_net_mean;
+    const lo = Math.min(...ex, ...ob), hi = Math.max(...ex, ...ob);
+    const padv = (hi - lo) * 0.06, a = lo - padv, b = hi + padv;
+    const ticks = linTicks(a, b, 5);
+    const f = frame(p, { W: 980, H: 380, m: { l: 64, r: 14, t: 10, b: 40 }, x: [a, b], y: [a, b], xTicks: ticks, yTicks: ticks, xFmt: fmtCompact, yFmt: fmtCompact, xTitle: "Expected net visitors (our calculation)", yTitle: "epymorph, average", label: "Expected vs observed net visitors per zone" });
+    el("line", { x1: f.sx(a), y1: f.sy(a), x2: f.sx(b), y2: f.sy(b), stroke: "var(--theory)", "stroke-width": 1.5, "stroke-dasharray": "5 4" }, f.svg);
+    ex.forEach((e, k) => {
+      const c = el("circle", { cx: f.sx(e), cy: f.sy(ob[k]), r: 4.5, fill: "var(--sim)", "fill-opacity": 0.8, stroke: "var(--surface)", "stroke-width": 1.5 }, f.svg);
+      const z = D.zones[k];
+      c.addEventListener("pointermove", (ev) => tipAt(p, `<div class="t">${z.name}</div><div class="r"><span>Province</span><b style="font-family:var(--font-body)">${z.province}</b></div><div class="r"><span>Expected</span><b>${e >= 0 ? "+" : ""}${fmtInt(e)}</b></div><div class="r"><span>epymorph</span><b>${ob[k] >= 0 ? "+" : ""}${fmtInt(ob[k])}</b></div><div class="r"><span>z</span><b>${MV.z[k].toFixed(2)}</b></div>`, ev));
+      c.addEventListener("pointerleave", () => hideTip(p));
+    });
+  })();
+
+  // ---------- Check 3: reference model ----------
+  (function () {
+    document.getElementById("ref-legend").innerHTML = [
+      [lineKey("var(--sim)", "", 2, true), "epymorph, 90% of runs"],
+      [lineKey("var(--sim)", "", 2.2), "epymorph, average of runs"],
+      [lineKey("var(--ref)", "6 4", 2.2), "Our implementation, same steps"],
+      [lineKey("var(--ode)", "1.5 3", 2), "Our implementation, continuous ODE"],
+    ].map(([k, l]) => `<span>${k}${l}</span>`).join("");
+    const p = document.getElementById("ref");
+    p.insertAdjacentHTML("beforeend", `<div class="cap">Daily new infectious cases, all ${NZ} zones combined</div>`);
+    const yMax = Math.max(...RF.runs_hi, ...RF.discrete, ...RF.continuous) * 1.04;
+    const f = frame(p, { W: 980, H: 340, m: { l: 52, r: 14, t: 8, b: 26 }, x: [0, DAYS - 1], y: [0, yMax], xTicks: monthTicks(DAYS), yTicks: linTicks(0, yMax, 5), xFmt: monthFmt, yFmt: fmtCompact, label: "Average epymorph run vs independent implementations" });
+    el("path", { d: bandOf(RF.runs_lo, RF.runs_hi, f.sx, f.sy), fill: "var(--sim)", "fill-opacity": 0.16, stroke: "none" }, f.svg);
+    el("path", { d: pathOf(RF.runs_mean, f.sx, f.sy), fill: "none", stroke: "var(--sim)", "stroke-width": 2.6 }, f.svg);
+    el("path", { d: pathOf(RF.discrete, f.sx, f.sy), fill: "none", stroke: "var(--ref)", "stroke-width": 2.2, "stroke-dasharray": "6 4" }, f.svg);
+    el("path", { d: pathOf(RF.continuous, f.sx, f.sy), fill: "none", stroke: "var(--ode)", "stroke-width": 2, "stroke-dasharray": "1.5 3", "stroke-linecap": "round" }, f.svg);
+    const xh = el("line", { y1: f.m.t, y2: f.m.t + f.ih, class: "xhair", visibility: "hidden" }, f.svg);
+    const hit = el("rect", { x: f.m.l, y: f.m.t, width: f.iw, height: f.ih, fill: "transparent" }, f.svg);
+    hit.addEventListener("pointermove", (ev) => {
+      const r = f.svg.getBoundingClientRect(); const d = Math.max(0, Math.min(DAYS - 1, Math.round((((ev.clientX - r.left) / r.width) * f.W - f.m.l) / f.iw * (DAYS - 1))));
+      xh.setAttribute("x1", f.sx(d)); xh.setAttribute("x2", f.sx(d)); xh.setAttribute("visibility", "visible");
+      tipAt(p, `<div class="t">${fmtDate(d)} · day ${d}</div>
+        <div class="r"><span>epymorph average</span><b>${fmtInt(RF.runs_mean[d])}</b></div>
+        <div class="r"><span>epymorph 90%</span><b>${fmtInt(RF.runs_lo[d])}–${fmtInt(RF.runs_hi[d])}</b></div>
+        <div class="r"><span>Ours, same steps</span><b>${fmtInt(RF.discrete[d])}</b></div>
+        <div class="r"><span>Ours, continuous</span><b>${fmtInt(RF.continuous[d])}</b></div>`, ev);
+    });
+    hit.addEventListener("pointerleave", () => { xh.setAttribute("visibility", "hidden"); hideTip(p); });
+    const row = (name, s) => `<tr><td>${name}</td><td>${s.day}</td><td>${fmtDate(s.day)}</td><td>${fmtInt(s.size)}</td><td>${fmtInt(s.total)}</td><td>${s === rs.runs_mean ? "–" : (rs.runs_mean.total / s.total - 1 >= 0 ? "+" : "") + pct(rs.runs_mean.total / s.total - 1, 2)}</td></tr>`;
+    document.getElementById("ref-table").innerHTML = `<thead><tr><th></th><th>Peak day</th><th>Peak date</th><th>Peak cases/day</th><th>Total infected</th><th>epymorph total vs this</th></tr></thead><tbody>
+      ${row("epymorph, average of runs", rs.runs_mean)}${row("Ours, same steps", rs.discrete)}${row("Ours, continuous ODE", rs.continuous)}</tbody>`;
+  })();
+
+  // ---------- Check 4: growth ----------
+  (function () {
+    const [lo, hi] = GR.window;
+    const p = document.getElementById("growth-curve");
+    p.insertAdjacentHTML("beforeend", `<h3>Daily cases on a log scale</h3><div class="cap">Average of runs; the theory line has slope r = ${GR.theory.toFixed(4)} per day. Fit window shaded.</div>`);
+    const end = Math.min(DAYS - 1, hi + 80);
+    const series = RF.runs_mean.slice(0, end + 1);
+    const yMin = Math.max(1, Math.min(...series.filter((v) => v > 0)) / 1.5), yMax = Math.max(...series) * 1.5;
+    const yT = []; for (let e = Math.ceil(Math.log10(yMin)); 10 ** e <= yMax; e++) yT.push(10 ** e);
+    const xT = linTicks(0, end, 5);
+    const f = frame(p, { W: 480, H: 280, m: { l: 46, r: 10, t: 8, b: 36 }, x: [0, end], y: [yMin, yMax], ylog: true, xTicks: xT, yTicks: yT, yFmt: fmtCompact, xTitle: "Day", label: "Log daily cases with theoretical growth rate" });
+    el("rect", { x: f.sx(lo), y: f.m.t, width: f.sx(hi) - f.sx(lo), height: f.ih, fill: "var(--surface-2)" }, f.svg);
+    el("path", { d: pathOf(series, f.sx, f.sy), fill: "none", stroke: "var(--sim)", "stroke-width": 2.2 }, f.svg);
+    // Theory line anchored to the run average at the middle of the window.
+    const mid = Math.round((lo + hi) / 2), anchor = RF.runs_mean[mid];
+    const tl = (d) => anchor * Math.exp(GR.theory * (d - mid));
+    el("line", { x1: f.sx(lo - 15), y1: f.sy(tl(lo - 15)), x2: f.sx(hi + 15), y2: f.sy(tl(hi + 15)), stroke: "var(--theory)", "stroke-width": 2, "stroke-dasharray": "6 4" }, f.svg);
+    el("text", { x: f.sx(lo) + 6, y: f.m.t + 14, "text-anchor": "start" }, f.svg).textContent = `fit days ${lo}–${hi}`;
+
+    const q = document.getElementById("growth-runs");
+    q.insertAdjacentHTML("beforeend", `<h3>Fitted growth rate per run</h3><div class="cap">Each dot is one run; the dashed line is theory.</div>`);
+    const vals = GR.per_run.concat([GR.theory, GR.reference_discrete, GR.reference_continuous]);
+    const a = Math.min(...vals), b = Math.max(...vals), pad = (b - a) * 0.6 + 0.0005;
+    const g = frame(q, { W: 480, H: 280, m: { l: 150, r: 14, t: 8, b: 36 }, x: [a - pad, b + pad], y: [0, 4], xTicks: linTicks(a - pad, b + pad, 4), yTicks: [], xFmt: (v) => v.toFixed(4), xTitle: "Growth rate r (per day)", label: "Fitted growth rates per run vs theory" });
+    const rowsY = { runs: 1, disc: 2, cont: 3 };
+    [["epymorph runs", rowsY.runs], ["Ours, same steps", rowsY.disc], ["Ours, continuous", rowsY.cont]].forEach(([l, yy]) => el("text", { x: g.m.l - 10, y: g.sy(yy) + 4, "text-anchor": "end", style: "font-family:var(--font-body);font-size:12px;fill:var(--fg-2)" }, g.svg).textContent = l);
+    el("line", { x1: g.sx(GR.theory), x2: g.sx(GR.theory), y1: g.m.t, y2: g.m.t + g.ih, stroke: "var(--theory)", "stroke-width": 2, "stroke-dasharray": "6 4" }, g.svg);
+    el("text", { x: g.sx(GR.theory), y: g.m.t + g.ih - 6, "text-anchor": "middle", style: "fill:var(--theory)" }, g.svg).textContent = "theory";
+    GR.per_run.forEach((v, k) => {
+      const c = el("circle", { cx: g.sx(v), cy: g.sy(rowsY.runs) + ((k % 5) - 2) * 4, r: 4, fill: "var(--sim)", "fill-opacity": 0.75, stroke: "var(--surface)", "stroke-width": 1.2 }, g.svg);
+      c.addEventListener("pointermove", (ev) => tipAt(q, `<div class="t">Run ${k + 1}</div><div class="r"><span>r</span><b>${v.toFixed(5)}</b></div><div class="r"><span>vs theory</span><b>${pct(v / GR.theory - 1, 2)}</b></div>`, ev));
+      c.addEventListener("pointerleave", () => hideTip(q));
+    });
+    el("circle", { cx: g.sx(GR.reference_discrete), cy: g.sy(rowsY.disc), r: 5, fill: "var(--ref)" }, g.svg);
+    el("circle", { cx: g.sx(GR.reference_continuous), cy: g.sy(rowsY.cont), r: 5, fill: "var(--ode)" }, g.svg);
+
+    const WS = GR.window_sensitivity, early = WS[0];
+    const gap = (v) => `${v / GR.theory - 1 >= 0 ? "+" : ""}${pct(v / GR.theory - 1)}`;
+    document.getElementById("growth-finding").innerHTML = `<b style="color:var(--fg)">Why all three sit a little below theory.</b> Theory assumes everyone is susceptible, but the seeded zones build up immunity during the fit window, which slows growth. Fitting earlier windows shows this: the continuous ODE moves to within ${pct(Math.abs(early.reference_continuous / GR.theory - 1))} of theory for days ${early.window[0]}–${early.window[1]}. Our same-steps version stays about ${pct(Math.abs(early.reference_discrete / GR.theory - 1), 0)} lower, which is the effect of advancing in 8- and 16-hour steps. Over the main window, epymorph's average is within ${pct(Math.abs(GR.runs_mean / GR.reference_discrete - 1))} of our same-steps version. In the earliest window it grows more slowly (${gap(early.runs_mean)} vs ${gap(early.reference_discrete)}). That's expected: a deterministic model spreads tiny fractions of an infection to every zone at once, while the stochastic model has to wait for whole infected travelers to arrive.`;
+    document.getElementById("growth-table").innerHTML = `<thead><tr><th>Fit window (days)</th><th>epymorph, average</th><th>Ours, same steps</th><th>Ours, continuous</th></tr></thead><tbody>` +
+      WS.map((w) => `<tr><td>${w.window[0]}–${w.window[1]}${w.window[0] === GR.window[0] && w.window[1] === GR.window[1] ? " (used above)" : ""}</td><td>${w.runs_mean.toFixed(4)} (${gap(w.runs_mean)})</td><td>${w.reference_discrete.toFixed(4)} (${gap(w.reference_discrete)})</td><td>${w.reference_continuous.toFixed(4)} (${gap(w.reference_continuous)})</td></tr>`).join("") + `</tbody>`;
+  })();
+
+  // ---------- Check 5: final size ----------
+  (function () {
+    const ar = FS.attack_rate_median, lo = FS.attack_rate_lo, hi = FS.attack_rate_hi;
+    document.getElementById("fs-stats").innerHTML = `
+      <span>Theory <b>${pct(FS.theory)}</b></span>
+      <span>All zones combined <b>${pct(FS.overall_median)}</b></span>
+      <span>Zone range <b>${pct(Math.min(...ar))}–${pct(Math.max(...ar))}</b></span>
+      <span>Still infected on day ${DAYS} <b>${fmtInt(FS.still_infected_at_end_median)}</b> people</span>`;
+    const p = document.getElementById("fs");
+    p.insertAdjacentHTML("beforeend", `<div class="cap">Share ever infected by zone population. Dots are medians across runs and whiskers span 90% of runs; the dashed line is theory.</div>`);
+    const pops = D.zones.map((z) => z.population);
+    const x0 = Math.log10(Math.min(...pops) / 1.3), x1 = Math.log10(Math.max(...pops) * 1.3);
+    const yLo = Math.min(...lo, FS.theory) - 0.01, yHi = Math.max(...hi, FS.theory) + 0.01;
+    const xT = [1e4, 3e4, 1e5, 3e5, 1e6].filter((v) => Math.log10(v) >= x0 && Math.log10(v) <= x1);
+    const f = frame(p, { W: 980, H: 320, m: { l: 52, r: 14, t: 10, b: 40 }, x: [x0, x1], y: [yLo, yHi], xTicks: xT.map(Math.log10), yTicks: linTicks(yLo, yHi, 5), xFmt: (v) => fmtCompact(10 ** v), yFmt: (v) => pct(v, 0), xTitle: "Zone population (log scale)", label: "Share ever infected by zone vs theory" });
+    el("line", { x1: f.sx(x0), x2: f.sx(x1), y1: f.sy(FS.theory), y2: f.sy(FS.theory), stroke: "var(--theory)", "stroke-width": 2, "stroke-dasharray": "6 4" }, f.svg);
+    el("text", { x: f.sx(x1) - 4, y: f.sy(FS.theory) - 6, "text-anchor": "end", style: "fill:var(--theory)" }, f.svg).textContent = `theory ${pct(FS.theory)}`;
+    ar.forEach((v, k) => {
+      const x = f.sx(Math.log10(pops[k]));
+      el("line", { x1: x, x2: x, y1: f.sy(lo[k]), y2: f.sy(hi[k]), stroke: "var(--sim)", "stroke-opacity": 0.45, "stroke-width": 1.5 }, f.svg);
+      const c = el("circle", { cx: x, cy: f.sy(v), r: 4.5, fill: "var(--sim)", stroke: "var(--surface)", "stroke-width": 1.5 }, f.svg);
+      const z = D.zones[k];
+      c.addEventListener("pointermove", (ev) => tipAt(p, `<div class="t">${z.name}</div><div class="r"><span>Population</span><b>${fmtInt(z.population)}</b></div><div class="r"><span>Ever infected</span><b>${pct(v)}</b></div><div class="r"><span>90% of runs</span><b>${pct(lo[k])}–${pct(hi[k])}</b></div>`, ev));
+      c.addEventListener("pointerleave", () => hideTip(p));
+    });
+  })();
+
+  // ---------- Check 6: conservation ----------
+  const fact = (ok, text, v) => `<div class="fact">${pill(ok ? "pass" : "fail")}<span>${text}</span><span class="v">${v}</span></div>`;
+  document.getElementById("cons").innerHTML =
+    fact(CN.home_totals_match, "Each zone's residents add up to its GRID3 population", `${NZ} zones × every step`) +
+    fact(CN.overall_total_matches, "People present across all zones add up to the regional total", fmtInt(U.population)) +
+    fact(CN.no_negative_counts, "No compartment ever goes negative", "home and visiting counts") +
+    fact(MV.all_home_on_second_step, "Every traveler is back home for the second step of each day", `${DAYS} days`);
+
+  // ---------- Notes ----------
+  document.getElementById("notes").innerHTML = `
+    <p>Together these checks show that epymorph does what we set up: the SEIR equations are applied correctly at every step, travel follows the distance kernel, our data plugs in correctly, and the model's overall behavior matches both an independent implementation and textbook SEIR results.</p>
+    <ul>
+      <li><b>It doesn't show the parameters are right.</b> β, σ, γ, φ and the 5% travel share are placeholders. Fitting them to case data is the next step.</li>
+      <li><b>It doesn't show SEIR is the right model</b> for this outbreak. Ebola-specific features such as deaths, safe burials, hospital isolation and vaccination aren't included yet.</li>
+      <li><b>Small, expected gaps.</b> The two-step day (8 h away, 16 h home) makes epymorph's growth a little slower than the continuous-time ODE. Our same-step implementation reproduces that, which isolates the gap to the time step rather than a bug.</li>
+      <li><b>Distances are in miles.</b> epymorph's Centroids model measures great-circle distances in miles, so φ = ${U.phi_miles} means ${U.phi_miles} miles (about ${Math.round(U.phi_miles * 1.609)} km).</li>
+    </ul>`;
+  document.getElementById("footer").textContent = `Generated by scripts/verify_example.py and scripts/build_report.py in fcast-hack. Checks 1 and 2 use the first run's step-by-step output; the rest use all ${U.runs} runs.`;
+})();
+</script>

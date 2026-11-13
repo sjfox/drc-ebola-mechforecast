@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Health Zone Dynamics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* One reading column: each section pairs a figure with what it shows and what it means. */
+:root {
+  --bg: #f7f8f7; --surface: #ffffff; --surface-2: #eef0ee;
+  --fg: #141816; --fg-2: #4d5550; --fg-3: #7a827d; --rule: #dde1de; --accent: #1c5cab;
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-body: "Public Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121514; --surface: #1a1d1c; --surface-2: #232826; --fg: #eef0ee; --fg-2: #b9c0bb;
+    --fg-3: #8a928d; --rule: #2e3431; --accent: #6da7ec; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121514; --surface: #1a1d1c; --surface-2: #232826; --fg: #eef0ee; --fg-2: #b9c0bb;
+  --fg-3: #8a928d; --rule: #2e3431; --accent: #6da7ec; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body);
+  font-size: 15px; line-height: 1.6; padding: 40px 16px 64px;
+}
+main { max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+.prose { max-width: 72ch; }
+h1, h2 { font-family: var(--font-display); font-weight: 600; line-height: 1.2; margin: 0; }
+h1 { font-size: 2.1rem; }
+h2 { font-size: 1.5rem; margin-bottom: 12px; }
+h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-3);
+     margin: 18px 0 6px; font-weight: 600; }
+p { margin: 0 0 10px; }
+ul { margin: 0 0 10px; padding-left: 20px; }
+li { margin-bottom: 6px; }
+.meta { color: var(--fg-2); font-size: 0.9rem; margin-top: 8px; }
+.num { font-family: var(--font-data); font-size: 0.92em; }
+header .lede { font-size: 1.05rem; color: var(--fg-2); margin-top: 14px; }
+.key { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 22px; }
+.key h2 { font-size: 1.2rem; }
+figure { margin: 0; }
+/* Figures are rendered on white; keep them on a white card in dark mode too. */
+figure img { width: 100%; height: auto; display: block; background: #fff; border-radius: 8px;
+             border: 1px solid var(--rule); }
+figcaption { color: var(--fg-3); font-size: 0.85rem; margin-top: 6px; }
+details { margin-top: 10px; }
+summary { cursor: pointer; color: var(--accent); font-weight: 500; }
+details figure { margin-top: 14px; }
+table { border-collapse: collapse; font-size: 0.9rem; margin: 6px 0 12px; }
+th, td { text-align: left; padding: 5px 14px 5px 0; border-bottom: 1px solid var(--rule); }
+td.n, th.n { text-align: right; font-family: var(--font-data); }
+nav { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.9rem; margin-top: 16px; }
+nav a { color: var(--accent); text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<main>
+
+<header class="prose">
+  <h1>Health zone case dynamics in the Bundibugyo outbreak</h1>
+  <p class="meta">Release 2026-11-01 &middot; onset weeks treated as final through 2026-08-29 (at least 60 days old) &middot; 117 modeled health zones in Ituri, Nord-Kivu, Haut-Uele, Tshopo and Bas-Uele</p>
+  <p class="lede">How each health zone's weekly confirmed cases have evolved, and how much zones in the same province share their transmission dynamics. The aim is to inform how the forecasting model links zone-level R to province-level R.</p>
+  <nav>
+    <a href="#overview">1. All zones</a>
+    <a href="#provinces">2. Zones by province</a>
+    <a href="#matrix">3. Correlation matrix</a>
+    <a href="#pairs">4. Within vs between provinces</a>
+    <a href="#own">5. Zone vs province</a>
+    <a href="#methods">Methods</a>
+  </nav>
+</header>
+
+<section class="key prose">
+  <h2>Key findings</h2>
+  <ul>
+    <li><strong>The outbreak is concentrated in a few zones.</strong> Ituri has 5,142 of the 6,485 final cases, and Bunia, Rwampara, Nizi and Mongbwalu alone have 3,586. Of the 117 modeled zones, 63 have had at least one case, and 24 have 20 or more final cases.</li>
+    <li><strong>The provinces are at different stages.</strong> Ituri grew from late April and plateaued from July, and its total is falling in the weeks still being reported. Nord-Kivu grew steadily from May to the end of August. Haut-Uele took off in July. Tshopo and Bas-Uele have only scattered cases.</li>
+    <li><strong>Raw counts look alike everywhere, but week-to-week growth does not.</strong> On the log-count scale, zones correlate at about 0.6 whether or not they share a province. On the growth scale, zones in the same province correlate more than zones in different provinces (0.15 vs &minus;0.03, permutation p = 0.002). But the shared part is small, except in Haut-Uele.</li>
+    <li><strong>For the model:</strong> a zone's R should be pulled toward its province's R only partially. Ituri's zones in particular follow their own trajectories (Bunia, Rwampara and Mongbwalu track the province; Mangala, Nia Nia, Komanda and Mandima do not). In the E0 backtests, the R in the last fitted weeks is poorly identified. Tying zones tightly to the province would mostly replace zone noise with province bias, rather than fix that.</li>
+  </ul>
+</section>
+
+<section id="overview">
+  <div class="prose">
+    <h2>1. Every zone's weekly cases, by province</h2>
+    <p>One line per health zone with any cases, on a log(1 + cases) scale, so zones with 1 and 100 cases a week are both visible. Each province is its own panel. The four zones with the most final cases are labelled. Weeks less than 60 days old in the release are shaded and dashed, because they are still being filled in.</p>
+  </div>
+  <figure>{{img:output/zone_series/zone_timeseries_overview.png}}</figure>
+  <div class="prose">
+    <h3>What it shows</h3>
+    <ul>
+      <li><strong>Ituri (28 of 36 zones with cases).</strong> Bunia, Rwampara and Mongbwalu rose together from late April, reaching 40&ndash;100 cases a week by June, with Nizi and Lita joining in June. Below them is a long tail of zones with 0&ndash;5 cases a week that switch on and off from May to August.</li>
+      <li><strong>Nord-Kivu (16 of 34).</strong> Katwa, Beni and Butembo grew slowly and steadily from May; Katwa reached about 80 a week in August. Many more zones started reporting cases in late August and September.</li>
+      <li><strong>Haut-Uele (8 of 13).</strong> Nothing until late June. Then Isiro, Wamba, Pawa and Boma Mangbetu rose together to 10&ndash;20 a week in August.</li>
+      <li><strong>Tshopo (7 of 23) and Bas-Uele (4 of 11)</strong> have 0&ndash;3 cases a week in any zone, mostly from July on.</li>
+    </ul>
+    <h3>What it means</h3>
+    <p>Spread has moved outward from Ituri: to Nord-Kivu in May, Haut-Uele in July, and Tshopo and Bas-Uele after that. A model must therefore handle three different situations at once. These are large, plateaued zones with good data, zones still growing, and many zones with sporadic single cases. The sporadic zones carry almost no information about their own R. Their forecasts rely entirely on the province R and on importations through movement.</p>
+  </div>
+</section>
+
+<section id="provinces">
+  <div class="prose">
+    <h2>2. Zone time series, one figure per province</h2>
+    <p>Each zone on its own linear scale, ordered by final cases, with the province total in the first panel. Zones with no cases at all are left out. Free y scales make zone shapes comparable, but not their sizes; the (n) in each title gives the final case count.</p>
+  </div>
+  <figure>{{img:output/zone_series/zone_series_CD-IT.png}}<figcaption>Ituri</figcaption></figure>
+  <div class="prose">
+    <h3>Ituri</h3>
+    <ul>
+      <li>The province total rose from about 20 a week in early May to about 400 by early July, then stayed flat through August. In the weeks still being reported it falls toward about 200.</li>
+      <li>Under that plateau, zones move differently. Bunia and Nia Nia held steady through August. Rwampara and Mongbwalu peaked in late June to July and declined. Nizi peaked in July. Mangala and Komanda were still rising at the end of August.</li>
+      <li>Nyankunde had an early flare (up to 19 a week in May&ndash;June) that died out. Mandima stayed in single digits until September, then jumped to about 60 a week in the unfinished weeks.</li>
+    </ul>
+    <p><strong>Meaning:</strong> Ituri's flat total is the sum of rises and falls that offset each other. A single Ituri R hides very different zone trends. That is why the zone deviations in the model are large, and why holding a zone's R flat during a forecast misses turning points.</p>
+  </div>
+  <figure>{{img:output/zone_series/zone_series_CD-NK.png}}<figcaption>Nord-Kivu</figcaption></figure>
+  <div class="prose">
+    <h3>Nord-Kivu</h3>
+    <ul>
+      <li>The province total grew steadily from May to about 170 a week by late August. In the September&ndash;October weeks still being reported, it stays around 150&ndash;200.</li>
+      <li>Katwa, Beni and Butembo account for most of the cases and all grew through August. Katwa peaked in mid-August; Beni was still climbing.</li>
+      <li>Kalunguta, Mabalako, Oicha, Vuhovi and Mutwanga had their first sustained cases in late August and September. This is a second wave of spread inside the province.</li>
+    </ul>
+    <p><strong>Meaning:</strong> Nord-Kivu is still expanding to new zones. Forecasts here depend on importation through movement into zones with no history, not just on the R of zones already infected.</p>
+  </div>
+  <figure>{{img:output/zone_series/zone_series_CD-HU.png}}<figcaption>Haut-Uele</figcaption></figure>
+  <div class="prose">
+    <h3>Haut-Uele</h3>
+    <ul>
+      <li>All four affected zones started within a few weeks of each other in July and peaked in August, so the province rose to about 40 a week.</li>
+      <li>Isiro has declined since its peak. Pawa and Wamba stayed at about 10&ndash;15 a week through October (unfinished weeks).</li>
+    </ul>
+    <p><strong>Meaning:</strong> Haut-Uele behaves like a single connected epidemic. This is the one province where a common province R is a good description.</p>
+  </div>
+  <details>
+    <summary>Tshopo and Bas-Uele</summary>
+    <figure>{{img:output/zone_series/zone_series_CD-TO.png}}<figcaption>Tshopo</figcaption></figure>
+    <figure>{{img:output/zone_series/zone_series_CD-BU.png}}<figcaption>Bas-Uele</figcaption></figure>
+    <p class="prose">Both provinces have only 0&ndash;3 cases a week in any zone through August (23 and 4 final cases). Tshopo picks up in September, around Makiso-Kisangani and Kabondo. These series are too sparse to estimate any zone-level R.</p>
+  </details>
+</section>
+
+<section id="matrix">
+  <div class="prose">
+    <h2>3. Correlation between every pair of zones</h2>
+    <p>Correlations between the 24 zones with at least 20 final cases, over onset weeks 2026-04-25 to 2026-08-29 (19 weeks). Zones are ordered by province (black lines) and by first case. Blue means the two zones move together; orange means they move in opposite directions.</p>
+    <ul>
+      <li><strong>Level</strong> (left): correlation of log(1 + weekly cases).</li>
+      <li><strong>Growth</strong> (right): correlation of the week-to-week change in log(1 + 3-week average cases). Growth removes the shared rise-then-plateau shape and keeps the timing of acceleration and slowing.</li>
+    </ul>
+  </div>
+  <figure>{{img:output/zone_series/zone_corr_matrix.png}}</figure>
+  <div class="prose">
+    <h3>What it shows</h3>
+    <ul>
+      <li>On the level scale almost everything is blue, inside and across provinces. The main exceptions are Nyankunde and Kilo, the early-flaring Ituri zones, which line up badly with zones that started later.</li>
+      <li>On the growth scale the picture breaks up. There is a block of blue among the zones around Bunia (Bunia, Rwampara, Mongbwalu, Nyankunde), and a clear blue block for Haut-Uele. Most other cells are pale, and Haut-Uele against Ituri is mostly orange.</li>
+    </ul>
+    <h3>What it means</h3>
+    <p>Level correlations mostly reflect that every zone with cases rose and then levelled off, so they overstate how similar transmission is. Growth correlations are the relevant measure for a model of R. They show that zones near each other (the Bunia cluster, Haut-Uele) share changes in transmission, but most pairs of zones do not.</p>
+  </div>
+</section>
+
+<section id="pairs">
+  <div class="prose">
+    <h2>4. Within-province vs between-province similarity</h2>
+    <p>The same correlations, one point per pair of zones, grouped by whether the two zones share a province. The text in each panel gives the gap between the average within-province and between-province correlation. The p-value comes from shuffling province labels among the zones 2,000 times.</p>
+  </div>
+  <figure>{{img:output/zone_series/zone_corr_pairs.png}}</figure>
+  <div class="prose">
+    <table>
+      <thead><tr><th>Growth scale</th><th class="n">Zone pairs</th><th class="n">Average correlation</th></tr></thead>
+      <tbody>
+        <tr><td>Within Haut-Uele</td><td class="n">6</td><td class="n">0.46</td></tr>
+        <tr><td>Within Nord-Kivu</td><td class="n">6</td><td class="n">0.15</td></tr>
+        <tr><td>Within Ituri</td><td class="n">120</td><td class="n">0.14</td></tr>
+        <tr><td>Ituri &ndash; Nord-Kivu</td><td class="n">64</td><td class="n">0.09</td></tr>
+        <tr><td>Haut-Uele &ndash; Nord-Kivu</td><td class="n">16</td><td class="n">&minus;0.02</td></tr>
+        <tr><td>Haut-Uele &ndash; Ituri</td><td class="n">64</td><td class="n">&minus;0.14</td></tr>
+      </tbody>
+    </table>
+    <h3>What it shows</h3>
+    <ul>
+      <li><strong>Level:</strong> within and between are the same (gap +0.00, p = 0.45).</li>
+      <li><strong>Growth:</strong> within-province pairs average 0.15 and between-province pairs &minus;0.03 (gap +0.18, p = 0.002). The spread is wide. Within Ituri, pairs range from about &minus;0.5 to 0.95.</li>
+    </ul>
+    <h3>What it means</h3>
+    <p>Province membership does carry real information about how a zone's transmission changes, so a province-level R is a reasonable thing to share across zones. But it explains only a small part of zone-to-zone variation, outside Haut-Uele.</p>
+    <p>Pairs across provinces are also affected by timing: provinces whose epidemics are in opposite phases look negatively correlated (Haut-Uele against Ituri). Ituri and Nord-Kivu pairs are almost as similar as pairs within Ituri. Some of that comes from both provinces growing in May.</p>
+  </div>
+</section>
+
+<section id="own">
+  <div class="prose">
+    <h2>5. Does each zone track its own province?</h2>
+    <p>For each of the 24 zones, the correlation of its growth with two totals. One is the rest of its own province (blue circle), leaving the zone itself out so it can't correlate with its own cases. The other is all other provinces combined (orange triangle). Zones are ordered by final cases.</p>
+  </div>
+  <figure>{{img:output/zone_series/zone_vs_province.png}}</figure>
+  <div class="prose">
+    <h3>What it shows</h3>
+    <ul>
+      <li><strong>Haut-Uele:</strong> three of the four zones track the rest of the province closely (0.72&ndash;0.77) and move against the other provinces (&minus;0.25 to &minus;0.41).</li>
+      <li><strong>Ituri:</strong> Bunia, Rwampara and Mongbwalu track the rest of Ituri very closely (above 0.8). Bunia and Rwampara track the other provinces almost as well (about 0.8), because they drove the shared May growth. Most smaller Ituri zones are near zero or negative against both totals.</li>
+      <li><strong>Nord-Kivu:</strong> Katwa, Beni and Butembo track their province weakly (0.2&ndash;0.4). Musienene goes against both totals.</li>
+      <li>On average, own province vs other provinces is 0.15 vs 0.12 for Ituri, 0.18 vs 0.09 for Nord-Kivu, and 0.60 vs &minus;0.33 for Haut-Uele.</li>
+    </ul>
+    <h3>What it means</h3>
+    <p>The province R works well for Haut-Uele and for the big zones around Bunia. Most other zones are not well described by their province's R plus a small fixed offset. This supports keeping a time-varying zone deviation, and choosing how strongly to pool by province rather than tightening it everywhere. Pooling could depend on the province or on a zone's case count. For forecasts, the main issue is still how the zone deviation behaves in the last fitted weeks and the forecast weeks, where the data say little.</p>
+  </div>
+</section>
+
+<section id="methods" class="prose">
+  <h2>Methods and caveats</h2>
+  <ul>
+    <li><strong>Data:</strong> weekly confirmed cases by onset week from the 2026-11-01 release, zero-filled for the 117 modeled zones. Weeks ending on or before 2026-08-29 (at least 60 days old) are treated as final. Later weeks are shown but not analysed.</li>
+    <li><strong>Correlation sample:</strong> 24 zones with at least 20 final cases (16 Ituri, 4 Nord-Kivu, 4 Haut-Uele), weeks 2026-04-25 to 2026-08-29. No zone in Tshopo or Bas-Uele qualifies.</li>
+    <li><strong>Growth scale:</strong> the change from one week to the next in log(1 + 3-week trailing average), which smooths the noise of small counts. With about 18 values per zone, the correlation for any one pair is noisy (standard error about 0.23 near zero). Averages over many pairs and the permutation test are more reliable than any single cell.</li>
+    <li><strong>Timing:</strong> correlations are at lag zero. Zones that follow the same trajectory a few weeks apart will look less similar than they are. Some of the negative between-province values reflect phase differences, not opposite dynamics.</li>
+    <li><strong>Code:</strong> <span class="num">scripts/zone_series.R</span> makes every figure and the CSVs in <span class="num">output/zone_series/</span>. <span class="num">scripts/build_zone_report.py</span> builds this page.</li>
+  </ul>
+</section>
+
+</main>
+</body>
+</html>

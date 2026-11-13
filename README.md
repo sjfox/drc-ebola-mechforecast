@@ -118,3 +118,59 @@ line up other per-node data against `geo.table`, not the CSV's order.
   numbers against local denominators.
 - **Centroids.** Population-weighted centroids can fall outside non-convex zones (13 of
   519). They are only used for distances.
+
+## Joint nowcast/forecast model (R + Stan)
+
+A joint model of transmission (deterministic metapopulation SEIR with gravity mixing)
+and reporting delays, fit with Stan to the BDBV Modeling Hub data. Design decisions are
+logged in [docs/bdbv_model_decisions.md](docs/bdbv_model_decisions.md).
+
+Requires R with `cmdstanr` (CmdStan ≥ 2.36), `posterior`, `dplyr`, `tidyr`, `readr`,
+`ggplot2`, `patchwork`, `ggrepel`, `scales`, plus a checkout of the hub next to this
+repo. Developed with R 4.4.1, CmdStan 2.36.0, cmdstanr 0.9.0, posterior 1.6.1,
+dplyr 1.2.0, tidyr 1.3.1, readr 2.2.0, ggplot2 4.0.2, patchwork 1.3.2, ggrepel 0.9.6 and
+scales 1.4.0. The compiled model (`stan/bdbv_joint`) is gitignored and builds on the
+first run.
+
+```r
+install.packages(c("posterior", "dplyr", "tidyr", "readr", "ggplot2", "patchwork",
+                   "ggrepel", "scales"))
+install.packages("cmdstanr", repos = c("https://stan-dev.r-universe.dev", getOption("repos")))
+cmdstanr::install_cmdstan()
+```
+
+```bash
+cp ../BDBV-Modeling-Hub/target-data/time-series.csv data/raw/time-series.csv
+uv run python -m fcast.bdbv_inputs --hub ../BDBV-Modeling-Hub
+uv run python -m fcast.bdbv_pseudo               # diagnostic only, not used by the model (P1-P4)
+Rscript scripts/run_bdbv.R                       # latest vintage
+Rscript scripts/run_bdbv.R 2026-10-24            # an earlier vintage
+Rscript scripts/backtest_bdbv.R 2026-10-17 2026-10-24
+Rscript scripts/synthetic_check_bdbv.R output/bdbv/2026-11-01
+```
+
+Each run writes the hub sample file, diagnostics and plots to `output/bdbv/<as_of>/`.
+
+Forecasts damp each zone's log R toward 0 (R toward 1) by a factor of 0.5 per forecast
+week (`forecast_R = "damped"`, `damp_R = 0.5` in `bdbv_config()`), chosen by the
+finalized-data backtests below; see "Forecast R damping" in the decisions doc.
+
+### Finalized-data backtests
+
+Weekly forecast dates from 2026-05-09 to 2026-08-01, each fit to complete counts up to
+that date and scored with WIS against the hub flatline baseline, using only weeks at
+least 60 days old in the latest release as truth.
+
+```bash
+Rscript scripts/backtest_final.R E0                # fits (a few hours with 4 chains)
+Rscript scripts/backtest_final.R E0_damp050        # damped forecasts from E0's fits (minutes)
+Rscript scripts/score_final.R E0_damp050           # output/final/scores.csv, summary.csv
+Rscript scripts/plot_forecasts_final.R E0_damp050  # figures in output/final/review/
+uv run python scripts/build_zone_report.py forecast_review   # reports/forecast_review.html
+```
+
+`scripts/backtest_final.R` lists the variants (E0, the damping grid E0_dampNNN, E3_ar
+and F1 with in-fit AR(1) persistence). Variants marked "generated quantities only"
+reuse another variant's fits, so run that one first. Set `BDBV_CHAINS` to use fewer
+cores. Results are not tracked (`output/` is gitignored), so a new machine needs the E0
+fits rerun, or `output/final/` copied across.
