@@ -3,6 +3,88 @@
 Metapopulation forecasting for the ongoing DRC outbreak, built on
 [epymorph](https://github.com/NAU-CCL/Epymorph). Each node is a health zone.
 
+## Setup on a new machine
+
+The steps below get the joint R/Stan model (the forecasting model) running from a fresh
+clone. Later sections are the reference for each piece.
+
+**Prerequisites**
+
+- [uv](https://docs.astral.sh/uv/) (it installs Python 3.12, which `pyproject.toml`
+  requires).
+- R ≥ 4.4.
+- A C++ toolchain for CmdStan: Xcode command-line tools on macOS
+  (`xcode-select --install`), `build-essential` on Linux, RTools on Windows.
+- git, and access to the hub repo
+  ([sjfox/BDBV-Modeling-Hub](https://github.com/sjfox/BDBV-Modeling-Hub)).
+
+**Steps**
+
+1. Clone this repo and the hub side by side. The hub must be a full git clone, not a
+   downloaded copy: `fcast.bdbv_inputs` recovers the 10-09 delay release from the hub's
+   git history.
+
+   ```bash
+   git clone https://github.com/sjfox/drc-ebola-mechforecast.git
+   git clone https://github.com/sjfox/BDBV-Modeling-Hub.git
+   cd drc-ebola-mechforecast
+   ```
+
+2. Install the Python environment:
+
+   ```bash
+   uv sync
+   ```
+
+3. Install the R packages and CmdStan (once per machine; CmdStan takes several minutes
+   to build):
+
+   ```r
+   install.packages(c("posterior", "dplyr", "tidyr", "readr", "ggplot2", "patchwork",
+                      "ggrepel", "scales"))
+   install.packages("cmdstanr", repos = c("https://stan-dev.r-universe.dev", getOption("repos")))
+   cmdstanr::install_cmdstan()
+   ```
+
+4. Copy the hub data in and prepare the model inputs. Repeat this after each new hub
+   release (`git -C ../BDBV-Modeling-Hub pull` first).
+
+   ```bash
+   mkdir -p data/raw
+   cp ../BDBV-Modeling-Hub/target-data/time-series.csv data/raw/time-series.csv
+   uv run python -m fcast.bdbv_inputs --hub ../BDBV-Modeling-Hub
+   ```
+
+   This writes `data/raw/bdbv/` (the hub's auxiliary files) and refreshes
+   `data/processed/bdbv_zones.csv` and `bdbv_kernel.csv.gz`.
+
+5. Check that everything runs with a short fit (2 chains, 200 iterations; the posterior
+   isn't reliable, but it exercises the whole pipeline and compiles the Stan model):
+
+   ```bash
+   Rscript scripts/run_bdbv.R 2026-11-01 quick
+   ```
+
+   It writes a hub sample file, diagnostics and plots to `output/bdbv/2026-11-01/`.
+
+6. Run the full model on the latest release with `Rscript scripts/run_bdbv.R`, or the
+   backtests in "Finalized-data backtests" below.
+
+**Optional**
+
+- The geography build (`fcast.build_geo`, about 250 MB of downloads) and the OSRM
+  travel times (`fcast.build_travel`) are only needed to change the zone geography or
+  movement inputs. Their outputs are committed in `data/processed/`.
+- `fcast.bdbv_pseudo` is a diagnostic and isn't used by the model.
+
+**Run time and cores.** Fits use 4 chains (4 cores) by default. Set `BDBV_CHAINS` to
+use fewer, at the cost of fewer posterior samples. Backtest fits take 2–25 minutes per
+forecast date, growing with the number of weeks fitted, so a full 13-date backtest
+takes a few hours.
+
+**Not in git.** `output/` (fits, samples, scores) is gitignored. Results from another
+machine have to be copied across (`output/final/` for the backtests) or regenerated.
+
 ## Geography and population
 
 All health-zone geography and population come from a single source, GRID3:
